@@ -37,12 +37,6 @@ apt-get --yes install curl build-essential autoconf libtool pkg-config patchelf 
   ./configure --enable-chromecast=no --prefix=/usr
   make -j$(nproc)
   make -j$(nproc) DESTDIR=$(pwd)/build/ install
-  git clone https://github.com/sahlberg/libnfs.git
-  cd libnfs/
-  cmake -DCMAKE_INSTALL_PREFIX=/usr .
-  make -j$(nproc)
-  make -j$(nproc) DESTDIR=$(pwd)../build/ install
-  cd ../
   chmod 755 -R ./vlc-$VERSION/build
   cd build
   cp ../../org.videolan.vlc.desktop ./
@@ -57,6 +51,16 @@ apt-get --yes install curl build-essential autoconf libtool pkg-config patchelf 
   ./vlc-$VERSION/build/usr/lib/vlc/vlc-cache-gen ./vlc-$VERSION/build/usr/lib/vlc/plugins
 )
 
+(
+
+  git clone https://code.videolan.org/videolan/libaacs.git
+  cd libaacs
+  ./bootstrap
+  ./configure --prefix=/usr
+  make -j$(nproc)
+  make -j$(nproc) DESTDIR=$(pwd)../build/ install
+)
+
 find ./vlc-$VERSION/build/usr/lib/vlc/ -maxdepth 1 -name "lib*.so*" -exec patchelf --set-rpath '$ORIGIN/../' {} \;
 find ./vlc-$VERSION/build/usr/lib/vlc/plugins/ -name "lib*.so*" -exec patchelf --set-rpath '$ORIGIN/../../:$ORIGIN/../../../' {} \;
 
@@ -68,4 +72,4 @@ LINUX_DEPLOY_QT_EXCLUDE_COPYRIGHTS=true ARCH=x86_64 appimage-wrapper linuxdeploy
 mkdir -p release
 
 cp ./vlc-$VERSION*.AppImage release/
-md5sum ./VLC_media_player*.AppImage > release/MD5.txt
+md5sum ./vlc-$VERSION*.AppImage > release/MD5.txtz
