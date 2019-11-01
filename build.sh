@@ -37,6 +37,12 @@ apt-get --yes install curl build-essential autoconf libtool pkg-config patchelf 
   ./configure --enable-chromecast=no --prefix=/usr
   make -j$(nproc)
   make -j$(nproc) DESTDIR=$(pwd)/build/ install
+  git clone https://github.com/sahlberg/libnfs.git
+  cd libnfs/
+  cmake -DCMAKE_INSTALL_PREFIX=/usr .
+  make -j$(nproc)
+  make -j$(nproc) DESTDIR=$(pwd)../build/ install
+  cd ../
   chmod 755 -R ./vlc-$VERSION/build
   cd build
   cp ../../org.videolan.vlc.desktop ./
@@ -50,16 +56,6 @@ apt-get --yes install curl build-essential autoconf libtool pkg-config patchelf 
   rm usr/lib/vlc/plugins/plugins.dat
   ./vlc-$VERSION/build/usr/lib/vlc/vlc-cache-gen ./vlc-$VERSION/build/usr/lib/vlc/plugins
 )
-
-(
-  cd vlc-$VERSION
-  git clone https://github.com/sahlberg/libnfs.git
-  cd libnfs/
-  cmake -DCMAKE_INSTALL_PREFIX=/usr .
-  make -j$(nproc)
-  make -j$(nproc) DESTDIR=$(pwd)../build/ install
-)
-
 
 find ./vlc-$VERSION/build/usr/lib/vlc/ -maxdepth 1 -name "lib*.so*" -exec patchelf --set-rpath '$ORIGIN/../' {} \;
 find ./vlc-$VERSION/build/usr/lib/vlc/plugins/ -name "lib*.so*" -exec patchelf --set-rpath '$ORIGIN/../../:$ORIGIN/../../../' {} \;
