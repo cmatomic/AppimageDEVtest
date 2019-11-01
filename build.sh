@@ -35,7 +35,7 @@ apt-get --yes install curl build-essential autoconf libtool pkg-config patchelf 
 (
   git clone http://git.videolan.org/git/x262.git
   cd x262
-  ./configure --enable-debug --prefix=/usr
+  ./configure --enable-debug --disable-asm --prefix=/usr
   make -j$(nproc)
   make -j$(nproc) install 
 )
