@@ -58,8 +58,8 @@ apt-get --yes install curl build-essential autoconf libtool pkg-config patchelf 
   chmod 755 -R ./vlc-$VERSION/build
   cd build
   cp ../../org.videolan.vlc.desktop ./
-  cp ../../AppuRun ./
-  chmod +x ./AppuRun
+  cp ../../AppRun ./
+  chmod +x AppRun
   cp ./usr/share/icons/hicolor/256x256/apps/vlc.png ./
   mkdir -p ./usr/plugins/iconengines/
   cp /usr/lib/x86_64-linux-gnu/qt5/plugins/iconengines/libqsvgicon.so ./usr/plugins/iconengines/
