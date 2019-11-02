@@ -23,15 +23,6 @@ apt-get --yes install curl build-essential autoconf libtool pkg-config patchelf 
 )
 
 (
-  git clone https://code.videolan.org/videolan/libaacs.git
-  cd libaacs
-  ./bootstrap
-  ./configure  --prefix=/usr
-  make -j$(nproc)
-  make -j$(nproc) install
-)
-
-(
   git clone https://github.com/sahlberg/libnfs.git
   cd libnfs/
   cmake -DCMAKE_INSTALL_PREFIX=/usr .
@@ -60,7 +51,27 @@ apt-get --yes install curl build-essential autoconf libtool pkg-config patchelf 
   ./vlc-$VERSION/build/usr/lib/vlc/vlc-cache-gen ./vlc-$VERSION/build/usr/lib/vlc/plugins
 )
 
+(
+  cd vlc-$VERSION
+  git clone https://code.videolan.org/videolan/libaacs.git
+  cd libaacs
+  ./bootstrap
+  ./configure  --prefix=/usr
+  make -j$(nproc)
+  make -j$(nproc) DESTDIR=$(pwd)../build/ install
+)
 
+(
+  cd vlc-$VERSION
+  git clone https://code.videolan.org/videolan/libbdplus.git
+  cd libbdplus
+  ./bootstrap
+  ./configure  --prefix=/usr
+  make -j$(nproc)
+  make -j$(nproc) DESTDIR=$(pwd)../build/ install
+)
+
+find ./vlc-$VERSION/build/usr/lib/x86_64-linux-gnu/ -maxdepth 1 -name "lib*.so*" -exec patchelf --set-rpath '$ORIGIN/../' {} \;
 find ./vlc-$VERSION/build/usr/lib/vlc/ -maxdepth 1 -name "lib*.so*" -exec patchelf --set-rpath '$ORIGIN/../' {} \;
 find ./vlc-$VERSION/build/usr/lib/vlc/plugins/ -name "lib*.so*" -exec patchelf --set-rpath '$ORIGIN/../../:$ORIGIN/../../../' {} \;
 
@@ -95,6 +106,6 @@ md5sum ./VLC_media_player*.AppImage > release/MD5.txt
 # sparkle: MacOS X only
 # telx: incompatible with zvbi
 # vpx: not needed when having libavcodec
-# vsxu: Debian/Ubuntu xenial
+# vsxu: not in Debian/Ubuntu xenial
 # wasapi: Windows only
 
