@@ -57,6 +57,12 @@ apt-get --yes install curl build-essential autoconf libtool pkg-config patchelf 
   make -j$(nproc) DESTDIR=$(pwd)/build/ install
   chmod 755 -R ./vlc-$VERSION/build
   cd build
+  #Fix: remove problematic libraries
+  rm -f usr/lib/libEGL*
+  rm -f usr/lib/libnss*
+  rm -f usr/lib/libfribidi*
+  rm -f usr/lib/libxcb-dri2*
+  rm -f usr/lib/libxcb-dri3*
   cp ../../org.videolan.vlc.desktop ./
   cp ../../AppRun ./
   chmod +x AppRun
