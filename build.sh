@@ -15,7 +15,7 @@ apt-get update
 apt-get --yes dist-upgrade
 apt-get --yes install curl build-essential autoconf  libxcb-image0-dev libtool pkg-config patchelf libtasn1-6-dev libtasn1-3-bin libbsd-dev git automake cmake libgstreamer-plugins-base1.0-dev libopencv-dev autopoint bison  gettext flex libaa1-dev libarchive-dev libaribb24-dev libasound2-dev libass-dev libavahi-client-dev libavc1394-dev libavcodec-dev libavformat-dev liblircclient-dev libavresample-dev libbluray-dev libcaca-dev libcairo2-dev libcddb2-dev libchromaprint-dev libdbus-1-dev libdc1394-22-dev libdca-dev libdvbpsi-dev libdvdnav-dev libdvdread-dev libebml-dev libegl1-mesa-dev libfaad-dev libflac-dev libfluidsynth-dev libfreetype6-dev libfribidi-dev libgl1-mesa-dev libgles2-mesa-dev libgnutls28-dev libgnutls-dev libgtk-3-dev libharfbuzz-dev libidn11-dev libiso9660-dev  libjack-dev libkate-dev liblircclient-dev liblivemedia-dev liblua5.2-dev libmad0-dev libmatroska-dev libmicrodns-dev libmpcdec-dev libmpeg2-4-dev libmpg123-dev libmtp-dev libncursesw5-dev libnfs-dev libnotify-dev libogg-dev libomxil-bellagio-dev libmodplug-dev libopus-dev libplacebo-dev libpng-dev libpostproc-dev libprotobuf-dev libpulse-dev libqt5svg5-dev libqt5x11extras5 libqt5x11extras5-dev libraw1394-dev libresid-builder-dev librsvg2-dev libsamplerate0-dev libsdl-image1.2-dev libsdl1.2-dev libsecret-1-dev libshine-dev libshout3-dev libsidplay2-dev libsmbclient-dev libsndio-dev libsoxr-dev libspatialaudio-dev libspeex-dev libspeexdsp-dev libssh2-1-dev libswscale-dev libsystemd-dev libtag1-dev libtheora-dev libtwolame-dev libudev-dev libupnp-dev libv4l-dev libva-dev libvcdinfo-dev libvdpau-dev libvncserver-dev libvorbis-dev libx11-dev libx264-dev libx265-dev libxcb-composite0-dev libxcb-keysyms1-dev libxcb-randr0-dev libxcb-shm0-dev libxcb-xv0-dev libxcb1-dev libxext-dev libxi-dev libxinerama-dev libxml2-dev libxpm-dev libzvbi-dev lua5.2 oss4-dev protobuf-compiler python3:native qtbase5-dev qtbase5-private-dev wayland-protocols liba52-0.7.4-dev zlib1g-dev libfreerdp-dev libgme-dev libcrystalhd-dev libvpx-dev libaacs-dev libsrtp0-dev libprojectm-qt-dev libpangomm-1.4-dev libbitstream-dev libschroedinger-dev libminizip-dev valgrind libaom-dev libasm-dev libfluidsynth-dev libdsme0-dev libwayland-dev libaribb24-dev libfdk-aac-dev libopenmpt-dev  zsh
 #apt-get build-dep vlc --yes
-
+export QT_SELECT=qt5
 (
   git clone https://github.com/videolabs/libdsm.git
   cd libdsm
@@ -39,10 +39,8 @@ apt-get --yes install curl build-essential autoconf  libxcb-image0-dev libtool p
   ./bootstrap
   ./configure  --prefix=/usr
   make -j$(nproc)
-  #make -j$(nproc) install
-  make -j$(nproc) DESTDIR=$(pwd)../vlc-$VERSION/build/ install
-  ls -R ../../vlc-$VERSION/build
-  ls ../../vlc-$VERSION/build/usr/lib/
+  make -j$(nproc) install
+  #make -j$(nproc) DESTDIR=$(pwd)../vlc-$VERSION/build/ install
 )
 
 (
@@ -51,12 +49,7 @@ apt-get --yes install curl build-essential autoconf  libxcb-image0-dev libtool p
   ./bootstrap
   ./configure  --prefix=/usr
   make -j$(nproc)
-  #make -j$(nproc) install
-  make -j$(nproc) DESTDIR=$(pwd)../vlc-$VERSION/build/ install
-  ls -R ../../vlc-$VERSION/build
-  ls ../../vlc-$VERSION/build/usr/lib/
-)
-
+  make -j$(nproc) install
 (
   #wget http://download.videolan.org/pub/vlc/$VERSION/vlc-$VERSION.tar.xz
   #tar xJf vlc-$VERSION.tar.xz
@@ -78,16 +71,8 @@ apt-get --yes install curl build-essential autoconf  libxcb-image0-dev libtool p
   ./vlc-$VERSION/build/usr/lib/vlc/vlc-cache-gen ./vlc-$VERSION/build/usr/lib/vlc/plugins
 )
 
-(
-  #Fix: remove problematic libraries
-  rm -f /usr/lib/libEGL*
-  rm -f /usr/lib/libnss*
-  rm -f /usr/lib/libfribidi*
-  rm -f /usr/lib/libxcb-dri2*
-  rm -f /usr/lib/libxcb-dri3*
-)
- 
-#find ./libaacs/build/usr/lib/x86_64-linux-gnu/ -maxdepth 1 -name "lib*.so*" -exec patchelf --set-rpath '$ORIGIN/../' {} \;
+find  /usr/lib/x86_64-linux-gnu/ -maxdepth 1 -name "libaacs.so.0" -exec patchelf --set-rpath '$ORIGIN/../' {} \;
+find  /usr/lib/x86_64-linux-gnu/ -maxdepth 1 -name "libaacs.so.0.5.1" -exec patchelf --set-rpath '$ORIGIN/../' {} \;
 #find ./libbdplus/build/usr/lib/x86_64-linux-gnu/ -maxdepth 1 -name "lib*.so*" -exec patchelf --set-rpath '$ORIGIN/../' {} \;
 find ./vlc-$VERSION/build/usr/lib/ -maxdepth 1 -name "lib*.so*" -exec patchelf --set-rpath '$ORIGIN/../' {} \;
 find ./vlc-$VERSION/build/usr/lib/vlc/ -maxdepth 1 -name "lib*.so*" -exec patchelf --set-rpath '$ORIGIN/../' {} \;
