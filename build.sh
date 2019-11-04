@@ -3,6 +3,7 @@
 VERSION="3.0.8"
 
 #echo "deb http://in.archive.ubuntu.com/ubuntu/ xenial main" | tee /etc/apt/sources.list.d/xenial.list
+mkdir -m 775 -p ./vlc-$VERSION/build
 apt-get update
 apt-get --yes install python-software-properties software-properties-common
 add-apt-repository ppa:jonathonf/ffmpeg-4 --yes
@@ -36,7 +37,10 @@ apt-get --yes install curl build-essential autoconf libtool pkg-config patchelf 
   ./bootstrap
   ./configure  --prefix=/usr
   make -j$(nproc)
-  make -j$(nproc) DESTDIR=$(pwd)/build/ install
+  #make -j$(nproc) install
+  make -j$(nproc) DESTDIR=$(pwd)../vlc-$VERSION/build/ install
+  ls -R ../vlc-$VERSION/build
+  ls ../vlc-$VERSION/build/usr/lib/
 )
 
 (
@@ -45,7 +49,10 @@ apt-get --yes install curl build-essential autoconf libtool pkg-config patchelf 
   ./bootstrap
   ./configure  --prefix=/usr
   make -j$(nproc)
-  make -j$(nproc) DESTDIR=$(pwd)/build/ install
+  #make -j$(nproc) install
+  make -j$(nproc) DESTDIR=$(pwd)../vlc-$VERSION/build/ install
+  ls -R ../vlc-$VERSION/build
+  ls ../vlc-$VERSION/build/usr/lib/
 )
 
 (
@@ -55,14 +62,8 @@ apt-get --yes install curl build-essential autoconf libtool pkg-config patchelf 
   ./configure CFLAGS="-g" CXXFLAGS="-g" --enable-debug --enable-chromecast=no --enable-a52 --enable-aa --enable-aom --enable-aribsub --enable-avahi --enable-bluray --enable-caca --enable-chromaprint  --enable-dbus --enable-dca --enable-dvbpsi --enable-dvdnav --enable-faad --enable-flac --enable-fluidsynth --enable-freetype --enable-fribidi --enable-gles2 --enable-gnutls --enable-harfbuzz --enable-jack --enable-kate --enable-libass --enable-libmpeg2 --enable-libxml2 --enable-lirc --enable-live555 --enable-mad --enable-matroska --enable-mod --enable-mpc --enable-mpg123 --enable-mtp --enable-ncurses --enable-notify --enable-ogg --enable-opus --enable-pulse --enable-qt --enable-realrtsp --enable-samplerate --enable-sdl-image --enable-sftp --enable-shine --enable-shout --enable-skins2 --enable-sndio --enable-soxr --enable-spatialaudio --enable-speex --enable-svg --enable-svgdec --enable-taglib --enable-theora --enable-twolame --enable-upnp --enable-vdpau --enable-vnc --enable-vorbis --enable-x264 --enable-x265 --enable-zvbi --enable-alsa  --enable-dc1394  --enable-dv1394 --enable-libplacebo --enable-linsys --enable-nfs --enable-omxil --enable-udev --enable-v4l2 --enable-wayland --enable-libva --enable-vcd --enable-smbclient --enable-debug --disable-crystalhd --disable-d3d11va --disable-decklink --disable-directx --disable-dxva2  --disable-fluidlite --disable-freerdp --disable-goom --disable-gst-decode --disable-libtar --disable-macosx --disable-macosx-avfoundation --disable-macosx-qtkit --disable-mfx --disable-opencv --disable-projectm --disable-schroedinger --disable-sparkle  --disable-telx --disable-vpx --disable-vsxu --disable-wasapi  --with-kde-solid=/usr/share/solid/actions/ --prefix=/usr
   make -j$(nproc)
   make -j$(nproc) DESTDIR=$(pwd)/build/ install
-  chmod 755 -R ./vlc-$VERSION/build
+  #chmod 755 -R ./vlc-$VERSION/build
   cd build
-  #Fix: remove problematic libraries
-  rm -f usr/lib/libEGL*
-  rm -f usr/lib/libnss*
-  rm -f usr/lib/libfribidi*
-  rm -f usr/lib/libxcb-dri2*
-  rm -f usr/lib/libxcb-dri3*
   cp ../../org.videolan.vlc.desktop ./
   cp ../../AppRun ./
   chmod +x AppRun
@@ -75,8 +76,17 @@ apt-get --yes install curl build-essential autoconf libtool pkg-config patchelf 
   ./vlc-$VERSION/build/usr/lib/vlc/vlc-cache-gen ./vlc-$VERSION/build/usr/lib/vlc/plugins
 )
 
-find ./libaacs/build/usr/lib/x86_64-linux-gnu/ -maxdepth 1 -name "lib*.so*" -exec patchelf --set-rpath '$ORIGIN/../' {} \;
-find ./libbdplus/build/usr/lib/x86_64-linux-gnu/ -maxdepth 1 -name "lib*.so*" -exec patchelf --set-rpath '$ORIGIN/../' {} \;
+(
+  #Fix: remove problematic libraries
+  rm -f /usr/lib/libEGL*
+  rm -f /usr/lib/libnss*
+  rm -f /usr/lib/libfribidi*
+  rm -f /usr/lib/libxcb-dri2*
+  rm -f /usr/lib/libxcb-dri3*
+)
+ 
+#find ./libaacs/build/usr/lib/x86_64-linux-gnu/ -maxdepth 1 -name "lib*.so*" -exec patchelf --set-rpath '$ORIGIN/../' {} \;
+#find ./libbdplus/build/usr/lib/x86_64-linux-gnu/ -maxdepth 1 -name "lib*.so*" -exec patchelf --set-rpath '$ORIGIN/../' {} \;
 find ./vlc-$VERSION/build/usr/lib/ -maxdepth 1 -name "lib*.so*" -exec patchelf --set-rpath '$ORIGIN/../' {} \;
 find ./vlc-$VERSION/build/usr/lib/vlc/ -maxdepth 1 -name "lib*.so*" -exec patchelf --set-rpath '$ORIGIN/../' {} \;
 find ./vlc-$VERSION/build/usr/lib/vlc/plugins/ -name "lib*.so*" -exec patchelf --set-rpath '$ORIGIN/../../:$ORIGIN/../../../' {} \;
