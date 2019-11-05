@@ -1,9 +1,6 @@
 #/bin/bash
 
 VERSION="3.0.8"
-wget http://download.videolan.org/pub/vlc/$VERSION/vlc-$VERSION.tar.xz
-tar xJf vlc-$VERSION.tar.xz
-chmod 755 -R ./vlc-$VERSION/build
 #echo "deb http://in.archive.ubuntu.com/ubuntu/ xenial main" | tee /etc/apt/sources.list.d/xenial.list
 apt-get update
 apt-get --yes install python-software-properties software-properties-common
@@ -35,26 +32,6 @@ ls
 )
 
 (
- 
-  git clone https://code.videolan.org/videolan/libaacs.git
-  cd libaacs
-  ./bootstrap
-  ./configure  --prefix=/usr 
-  make -j$(nproc)
-  #make -j$(nproc) install
-  make -j$(nproc) DESTDIR=$(pwd)../vlc-$VERSION/build/ install
-)
-
-
-(
- ls
-  git clone https://code.videolan.org/videolan/libbdplus.git
-  cd libbdplus
-  ./bootstrap
-  ./configure  --prefix=/usr 
-  make -j$(nproc)
-  make -j$(nproc) DESTDIR=$(pwd)../vlc-$VERSION/build/ install
-(
 
   #wget http://download.videolan.org/pub/vlc/$VERSION/vlc-$VERSION.tar.xz
   #tar xJf vlc-$VERSION.tar.xz
@@ -76,19 +53,19 @@ ls
   ./vlc-$VERSION/build/usr/lib/vlc/vlc-cache-gen ./vlc-$VERSION/build/usr/lib/vlc/plugins
 )
 
-rm -f ./vlc-$VERSION/build/usr/lib/libfreetype.so.6
-rm -f /usr/lib/libfreetype.so.6
-rm -f usr/lib/libfreetype.so.6
+#rm -f ./vlc-$VERSION/build/usr/lib/libfreetype.so.6
+#rm -f /usr/lib/libfreetype.so.6
+#rm -f usr/lib/libfreetype.so.6
 #find  /usr/lib/x86_64-linux-gnu/ -maxdepth 1 -name "libaacs.so.0" -exec patchelf --set-rpath '$ORIGIN/../' {} \;
 #find  /usr/lib/x86_64-linux-gnu/ -maxdepth 1 -name "libaacs.so.0.5.1" -exec patchelf --set-rpath '$ORIGIN/../' {} \;
 #find ./libbdplus/build/usr/lib/x86_64-linux-gnu/ -maxdepth 1 -name "lib*.so*" -exec patchelf --set-rpath '$ORIGIN/../' {} \;
 find ./vlc-$VERSION/build/usr/lib/ -maxdepth 1 -name "lib*.so*" -exec patchelf --set-rpath '$ORIGIN/../' {} \;
 find ./vlc-$VERSION/build/usr/lib/vlc/ -maxdepth 1 -name "lib*.so*" -exec patchelf --set-rpath '$ORIGIN/../' {} \;
 find ./vlc-$VERSION/build/usr/lib/vlc/plugins/ -name "lib*.so*" -exec patchelf --set-rpath '$ORIGIN/../../:$ORIGIN/../../../' {} \;
-rm -f ./vlc-$VERSION/build/usr/lib/libfreetype.so.6
-wget "https://github.com/azubieta/linuxdeployqt/releases/download/continuous/linuxdeployqt-continuous-x86_64.AppImage"
+#rm -f ./vlc-$VERSION/build/usr/lib/libfreetype.so.6
+wget "https://github.com/probonopd/linuxdeployqt/releases/download/continuous/linuxdeployqt-continuous-x86_64.AppImage"
 chmod a+x ./linuxdeployqt-continuous-x86_64.AppImage
-LINUX_DEPLOY_QT_EXCLUDE_COPYRIGHTS=true appimage-wrapper linuxdeployqt-continuous-x86_64.AppImage vlc-$VERSION/build/org.videolan.vlc.desktop -bundle-non-qt-libs
+LINUX_DEPLOY_QT_EXCLUDE_COPYRIGHTS=true appimage-wrapper linuxdeployqt-continuous-x86_64.AppImage vlc-$VERSION/build/org.videolan.vlc.desktop -bundle-non-qt-libs -exclude-libs=libfreetype.so.6
 LINUX_DEPLOY_QT_EXCLUDE_COPYRIGHTS=true ARCH=x86_64 appimage-wrapper linuxdeployqt-continuous-x86_64.AppImage vlc-$VERSION/build/org.videolan.vlc.desktop -appimage
 
 mkdir -p release
