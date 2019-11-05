@@ -21,7 +21,7 @@ apt-get --yes install curl build-essential autoconf  libxcb-image0-dev libtool p
   git clone https://github.com/videolabs/libdsm.git
   cd libdsm
   ./bootstrap
-  ./configure --prefix=/usr
+  ./configure --prefix=/usr --libdir=../vlc-$VERSION/build/usr/lib
   make -j$(nproc)
   make -j$(nproc) install
 )
@@ -36,11 +36,10 @@ apt-get --yes install curl build-essential autoconf  libxcb-image0-dev libtool p
 
 (
   
-  cd /usr/src
   git clone https://code.videolan.org/videolan/libaacs.git
   cd libaacs
   ./bootstrap
-  ./configure  --prefix=/usr --libdir=/usr/lib
+  ./configure  --prefix=/usr --libdir=../vlc-$VERSION/build/usr/lib
   make -j$(nproc)
   make -j$(nproc) install
   #make -j$(nproc) DESTDIR=$(pwd)../vlc-$VERSION/build/ install
@@ -64,7 +63,7 @@ apt-get --yes install curl build-essential autoconf  libxcb-image0-dev libtool p
   #chmod 755 -R ./vlc-$VERSION/build
   cd build
   cp ../../org.videolan.vlc.desktop ./
-  cp ../../AppRun ./
+  cp ../../AppRun .
   chmod +x AppRun
   cp ./usr/share/icons/hicolor/256x256/apps/vlc.png ./
   mkdir -p ./usr/plugins/iconengines/
@@ -75,7 +74,7 @@ apt-get --yes install curl build-essential autoconf  libxcb-image0-dev libtool p
   ./vlc-$VERSION/build/usr/lib/vlc/vlc-cache-gen ./vlc-$VERSION/build/usr/lib/vlc/plugins
 )
 
-rm -f /usr/lib/libfreetype.so.6 || true
+#rm -f /usr/lib/libfreetype.so.6 || true
 #find  /usr/lib/x86_64-linux-gnu/ -maxdepth 1 -name "libaacs.so.0" -exec patchelf --set-rpath '$ORIGIN/../' {} \;
 #find  /usr/lib/x86_64-linux-gnu/ -maxdepth 1 -name "libaacs.so.0.5.1" -exec patchelf --set-rpath '$ORIGIN/../' {} \;
 #find ./libbdplus/build/usr/lib/x86_64-linux-gnu/ -maxdepth 1 -name "lib*.so*" -exec patchelf --set-rpath '$ORIGIN/../' {} \;
@@ -86,6 +85,14 @@ find ./vlc-$VERSION/build/usr/lib/vlc/plugins/ -name "lib*.so*" -exec patchelf -
 wget "https://github.com/azubieta/linuxdeployqt/releases/download/continuous/linuxdeployqt-continuous-x86_64.AppImage"
 chmod a+x ./linuxdeployqt-continuous-x86_64.AppImage
 LINUX_DEPLOY_QT_EXCLUDE_COPYRIGHTS=true appimage-wrapper linuxdeployqt-continuous-x86_64.AppImage vlc-$VERSION/build/org.videolan.vlc.desktop -bundle-non-qt-libs
+
+)
+
+cd vlc-$VERSION
+rm -f usr/lib/libfreetype.so.6 
+
+(
+
 LINUX_DEPLOY_QT_EXCLUDE_COPYRIGHTS=true ARCH=x86_64 appimage-wrapper linuxdeployqt-continuous-x86_64.AppImage vlc-$VERSION/build/org.videolan.vlc.desktop -appimage
 
 mkdir -p release
