@@ -3,9 +3,7 @@
 VERSION="3.0.8"
 wget http://download.videolan.org/pub/vlc/$VERSION/vlc-$VERSION.tar.xz
 tar xJf vlc-$VERSION.tar.xz
-mkdir ./vlc-$VERSION/build
 chmod 755 -R ./vlc-$VERSION/build
-ls ./vlc-$VERSION
 #echo "deb http://in.archive.ubuntu.com/ubuntu/ xenial main" | tee /etc/apt/sources.list.d/xenial.list
 apt-get update
 apt-get --yes install python-software-properties software-properties-common
@@ -37,27 +35,27 @@ ls
 )
 
 (
-  ls
+ 
   git clone https://code.videolan.org/videolan/libaacs.git
   cd libaacs
   ./bootstrap
-  ./configure  --prefix=/usr --libdir=./vlc-$VERSION/build/usr/lib
+  ./configure  --prefix=/usr 
   make -j$(nproc)
-  make -j$(nproc) install
-  #make -j$(nproc) DESTDIR=$(pwd)../vlc-$VERSION/build/ install
+  #make -j$(nproc) install
+  make -j$(nproc) DESTDIR=$(pwd)../vlc-$VERSION/build/ install
 )
-ls
+
 
 (
  ls
   git clone https://code.videolan.org/videolan/libbdplus.git
   cd libbdplus
   ./bootstrap
-  ./configure  --prefix=/usr --prefix=/usr --libdir=/usr/lib
+  ./configure  --prefix=/usr 
   make -j$(nproc)
-  make -j$(nproc) install
+  make -j$(nproc) DESTDIR=$(pwd)../vlc-$VERSION/build/ install
 (
-ls
+
   #wget http://download.videolan.org/pub/vlc/$VERSION/vlc-$VERSION.tar.xz
   #tar xJf vlc-$VERSION.tar.xz
   cd vlc-$VERSION
@@ -67,9 +65,7 @@ ls
   #chmod 755 -R ./vlc-$VERSION/build
   cd build
   cp ../../org.videolan.vlc.desktop ./
-  ls
   cp ../../AppRun .
-  ls
   chmod +x AppRun
   cp ./usr/share/icons/hicolor/256x256/apps/vlc.png ./
   mkdir -p ./usr/plugins/iconengines/
@@ -80,21 +76,19 @@ ls
   ./vlc-$VERSION/build/usr/lib/vlc/vlc-cache-gen ./vlc-$VERSION/build/usr/lib/vlc/plugins
 )
 
-
-#rm -f /usr/lib/libfreetype.so.6 || true
+rm -f ./vlc-$VERSION/build/usr/lib/libfreetype.so.6
+rm -f /usr/lib/libfreetype.so.6
+rm -f usr/lib/libfreetype.so.6
 #find  /usr/lib/x86_64-linux-gnu/ -maxdepth 1 -name "libaacs.so.0" -exec patchelf --set-rpath '$ORIGIN/../' {} \;
 #find  /usr/lib/x86_64-linux-gnu/ -maxdepth 1 -name "libaacs.so.0.5.1" -exec patchelf --set-rpath '$ORIGIN/../' {} \;
 #find ./libbdplus/build/usr/lib/x86_64-linux-gnu/ -maxdepth 1 -name "lib*.so*" -exec patchelf --set-rpath '$ORIGIN/../' {} \;
 find ./vlc-$VERSION/build/usr/lib/ -maxdepth 1 -name "lib*.so*" -exec patchelf --set-rpath '$ORIGIN/../' {} \;
 find ./vlc-$VERSION/build/usr/lib/vlc/ -maxdepth 1 -name "lib*.so*" -exec patchelf --set-rpath '$ORIGIN/../' {} \;
 find ./vlc-$VERSION/build/usr/lib/vlc/plugins/ -name "lib*.so*" -exec patchelf --set-rpath '$ORIGIN/../../:$ORIGIN/../../../' {} \;
-
+rm -f ./vlc-$VERSION/build/usr/lib/libfreetype.so.6
 wget "https://github.com/azubieta/linuxdeployqt/releases/download/continuous/linuxdeployqt-continuous-x86_64.AppImage"
 chmod a+x ./linuxdeployqt-continuous-x86_64.AppImage
 LINUX_DEPLOY_QT_EXCLUDE_COPYRIGHTS=true appimage-wrapper linuxdeployqt-continuous-x86_64.AppImage vlc-$VERSION/build/org.videolan.vlc.desktop -bundle-non-qt-libs
-ls ./vlc-$VERSION/build/usr/lib/
-rm -f ./vlc-$VERSION/build/usr/lib/libfreetype.so.6
-ls ./vlc-$VERSION/build/usr/lib/
 LINUX_DEPLOY_QT_EXCLUDE_COPYRIGHTS=true ARCH=x86_64 appimage-wrapper linuxdeployqt-continuous-x86_64.AppImage vlc-$VERSION/build/org.videolan.vlc.desktop -appimage
 
 mkdir -p release
