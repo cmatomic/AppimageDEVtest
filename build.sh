@@ -35,6 +35,8 @@ apt-get --yes install curl build-essential autoconf  libxcb-image0-dev libtool p
 )
 
 (
+  
+  cd /usr/src
   git clone https://code.videolan.org/videolan/libaacs.git
   cd libaacs
   ./bootstrap
@@ -45,6 +47,7 @@ apt-get --yes install curl build-essential autoconf  libxcb-image0-dev libtool p
 )
 
 (
+  cd /usr/src
   git clone https://code.videolan.org/videolan/libbdplus.git
   cd libbdplus
   ./bootstrap
@@ -72,7 +75,7 @@ apt-get --yes install curl build-essential autoconf  libxcb-image0-dev libtool p
   ./vlc-$VERSION/build/usr/lib/vlc/vlc-cache-gen ./vlc-$VERSION/build/usr/lib/vlc/plugins
 )
 
-rm -f usr/lib/libfreetype.so.6 || true
+rm -f /usr/lib/libfreetype.so.6 || true
 #find  /usr/lib/x86_64-linux-gnu/ -maxdepth 1 -name "libaacs.so.0" -exec patchelf --set-rpath '$ORIGIN/../' {} \;
 #find  /usr/lib/x86_64-linux-gnu/ -maxdepth 1 -name "libaacs.so.0.5.1" -exec patchelf --set-rpath '$ORIGIN/../' {} \;
 #find ./libbdplus/build/usr/lib/x86_64-linux-gnu/ -maxdepth 1 -name "lib*.so*" -exec patchelf --set-rpath '$ORIGIN/../' {} \;
