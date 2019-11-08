@@ -71,31 +71,8 @@ LINUX_DEPLOY_QT_EXCLUDE_COPYRIGHTS=true appimage-wrapper linuxdeployqt-continuou
 LINUX_DEPLOY_QT_EXCLUDE_COPYRIGHTS=true ARCH=x86_64 appimage-wrapper linuxdeployqt-continuous-x86_64.AppImage vlc-$VERSION/build/org.videolan.vlc.desktop -exclude-libs=libfreetype.so.6 -appimage
 
 )
+
 mkdir -p release
 
 cp ./VLC_media_player*.AppImage release/
 md5sum ./VLC_media_player*.AppImage > release/MD5.txt
-
-# Reasons for disabling features:
-# chromecast:"protobuf" bug in gnutls-bin, preventing it from working correctly (during the build the binary was segfaulting)on Ubuntu xenial
-# https://trac.videolan.org/vlc/ticket/18329
-# crystalhd: unusble without firmware (#934242)
-# d3d11va: Windows only
-# decklink: not in Debian/Ubuntu xenial
-# directx: Windows only
-# dxva2: Windows only
-# fluidlite: fluidsynth is enabled
-# freerdp: scheduled for removal (#888323)
-# goom: not in Debian/Ubuntu xenial
-# gst-decode: not needed when having libavcodec
-# libtar: security issue (#737534)
-# macosx*: MacOX only
-# mfx: currently not supported on Linux
-# opencv: developer plugin not required by end users
-# projectm: broken
-# schroedinger: removed from Debian (#845037)
-# sparkle: MacOS X only
-# telx: incompatible with zvbi
-# vpx: not needed when having libavcodec
-# vsxu: not in Debian/Ubuntu xenial
-# wasapi: Windows only
