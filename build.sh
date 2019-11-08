@@ -59,8 +59,8 @@ apt-get --yes install curl build-essential autoconf  libxcb-image0-dev libxcb-im
 #find  /usr/lib/x86_64-linux-gnu/ -maxdepth 1 -name "libaacs.so.0" -exec patchelf --set-rpath '$ORIGIN/../' {} \;
 #find  /usr/lib/x86_64-linux-gnu/ -maxdepth 1 -name "libaacs.so.0.5.1" -exec patchelf --set-rpath '$ORIGIN/../' {} \;
 #find ./libbdplus/build/usr/lib/x86_64-linux-gnu/ -maxdepth 1 -name "lib*.so*" -exec patchelf --set-rpath '$ORIGIN/../' {} \;
-patchelf --set-rpath '$ORIGIN/../../lib' plugins/platforms/libqxcb.so
-patchelf --set-rpath '$ORIGIN/../lib libexec/QtWebEngineProcess
+#patchelf --set-rpath '$ORIGIN/../../lib' plugins/platforms/libqxcb.so
+#patchelf --set-rpath '$ORIGIN/../lib libexec/QtWebEngineProcess
 find ./vlc-$VERSION/build/usr/lib/ -maxdepth 1 -name "lib*.so*" -exec patchelf --set-rpath '$ORIGIN/../' {} \;
 find ./vlc-$VERSION/build/usr/lib/vlc/ -maxdepth 1 -name "lib*.so*" -exec patchelf --set-rpath '$ORIGIN/../' {} \;
 find ./vlc-$VERSION/build/usr/lib/vlc/plugins/ -name "lib*.so*" -exec patchelf --set-rpath '$ORIGIN/../../:$ORIGIN/../../../' {} \;
