@@ -76,3 +76,4 @@ mkdir -p release
 
 cp ./VLC_media_player*.AppImage release/
 md5sum ./VLC_media_player*.AppImage > release/MD5.txt
+locate libqxcb.so
