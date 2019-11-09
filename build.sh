@@ -46,7 +46,7 @@ apt-get --yes install curl build-essential autoconf  libxcb-image0-dev libxcb-im
   mkdir -p ./usr/plugins/iconengines/
   cp /usr/lib/x86_64-linux-gnu/qt5/plugins/iconengines/libqsvgicon.so ./usr/plugins/iconengines/
   mkdir -p ./usr/plugins/platforms/
-  #cp /usr/lib/x86_64-linux-gnu/qt5/plugins/platforms/libqxcb.so ./usr/plugins/platforms/
+  cp /usr/lib/x86_64-linux-gnu/qt5/plugins/platforms/libqxcb.so ./usr/plugins/platforms/
   rm usr/lib/vlc/plugins/plugins.dat
   ./vlc-$VERSION/build/usr/lib/vlc/vlc-cache-gen ./vlc-$VERSION/build/usr/lib/vlc/plugins
 )
@@ -61,6 +61,7 @@ apt-get --yes install curl build-essential autoconf  libxcb-image0-dev libxcb-im
 #find ./libbdplus/build/usr/lib/x86_64-linux-gnu/ -maxdepth 1 -name "lib*.so*" -exec patchelf --set-rpath '$ORIGIN/../' {} \;
 #patchelf --set-rpath '$ORIGIN/../../lib' plugins/platforms/libqxcb.so
 #patchelf --set-rpath '$ORIGIN/../lib libexec/QtWebEngineProcess
+#find /usr/lib/x86_64-linux-gnu/qt5/plugins/platforms/libqxcb.so  -exec patchelf --set-rpath '$ORIGIN/../' {} \;
 find ./vlc-$VERSION/build/usr/lib/ -maxdepth 1 -name "lib*.so*" -exec patchelf --set-rpath '$ORIGIN/../' {} \;
 find ./vlc-$VERSION/build/usr/lib/vlc/ -maxdepth 1 -name "lib*.so*" -exec patchelf --set-rpath '$ORIGIN/../' {} \;
 find ./vlc-$VERSION/build/usr/lib/vlc/plugins/ -name "lib*.so*" -exec patchelf --set-rpath '$ORIGIN/../../:$ORIGIN/../../../' {} \;
@@ -76,4 +77,3 @@ mkdir -p release
 
 cp ./VLC_media_player*.AppImage release/
 md5sum ./VLC_media_player*.AppImage > release/MD5.txt
-locate libqxcb.so
