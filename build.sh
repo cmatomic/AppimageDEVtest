@@ -53,78 +53,61 @@ apt-get --yes install curl build-essential autoconf  libxcb-image0-dev libxcb-im
 )
 
 
-
+(
 # x264
-http://git.videolan.org/git/x264.git
+  git clone http://git.videolan.org/git/x264.git
   cd x264
-  ./configure --prefix="$PREFIX" --enable-shared --disable-cli --enable-strip
+  ./configure  --prefix=/usr --enable-shared --disable-cli --enable-strip
   make clean
   make -j$JOBS V=0
   make install
-  cd -
-fi
-# x265
-wget 
-  rm -rf x265/source/build
-  mkdir -p x265/source/build
-  cd x265/source/build
-  cmake .. -DCMAKE_CXX_FLAGS="$CXXFLAGS" -DCMAKE_SHARED_LINKER_FLAGS="$LDFLAGS -s" -DCMAKE_INSTALL_PREFIX="$PREFIX" -DENABLE_CLI="OFF" -DENABLE_LIBNUMA="OFF"
-  make -j$JOBS
-  make install
-  cd -
-fi
+)
+
+(
 # dvdcss
   git clone http://code.videolan.org/videolan/libdvdcss.git
   cd libdvdcss
   autoreconf -if
-  ./configure --prefix="$PREFIX" --enable-shared --disable-static
+  ./configure  --prefix=/usr --enable-shared --disable-static
   make -j$(nproc)
   make -j$(nproc) install
-  cd -
-fi
+)
+
+(
 # dvdread
-http://code.videolan.org/videolan/libdvdread.git
+  git clone http://code.videolan.org/videolan/libdvdread.git
   cd libdvdread
-  autoreconf -if
-  ./configure --prefix="$PREFIX" --enable-shared --disable-static --with-libdvdcss
-  make clean
-  make -j$JOBS V=0
-  make install-strip
-  cd -
-fi
+  ./configure --prefix=/usr --enable-shared --disable-static --with-libdvdcss
+  make -j$(nproc)
+  make -j$(nproc) instal
+)
+
+(
 # dvdnav
-http://code.videolan.org/videolan/libdvdnav.git
-  cd libdvdnav
-  autoreconf -if
-  ./configure --prefix="$PREFIX" --enable-shared --disable-static
-  make clean
-  make -j$JOBS V=0
-  make install-strip
-  cd -
-fi
+ git clone http://code.videolan.org/videolan/libdvdnav.git
+ cd libdvdnav
+ ./configure --prefix=/usr --enable-shared --disable-static
+  make -j$(nproc)
+  make -j$(nproc) install
+)
+
+( 
 # bluray
- http://git.videolan.org/git/libbluray.git
+  git clone http://git.videolan.org/git/libbluray.git
   cd libbluray
-  git submodule init
-  git submodule update
-  autoreconf -if
-  ./configure --prefix="$PREFIX" --enable-shared --disable-static --disable-bdjava-jar --disable-doxygen-doc
-  make clean
-  make -j$JOBS V=0
-  make install-strip
-  cd -
-fi
+  ./configure --prefix=/usr --enable-shared --disable-static --disable-bdjava-jar --disable-doxygen-doc
+  make -j$(nproc)
+  make -j$(nproc) install
+)
+
+(
 # ffmpeg
  git clone https://github.com/FFmpeg/FFmpeg.git
  cd ffmpeg
  ./configure --prefix="$PREFIX" --enable-shared --disable-static --disable-debug --disable-programs --disable-doc
   make -j$(nproc)
   make -j$(nproc) install
-  cd -
-fi
-
-
-
+)
 
 
 (
