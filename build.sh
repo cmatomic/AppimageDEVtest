@@ -57,7 +57,7 @@ apt-get --yes install curl build-essential autoconf  libxcb-image0-dev libxcb-im
 # x264
   git clone http://git.videolan.org/git/x264.git
   cd x264
-  ./configure  --prefix=/usr 
+  ./configure  --prefix=/usr .
   make -j$(nproc)
   make -j$(nproc) install
 )
@@ -66,7 +66,7 @@ apt-get --yes install curl build-essential autoconf  libxcb-image0-dev libxcb-im
 # dvdcss
   git clone http://code.videolan.org/videolan/libdvdcss.git
   cd libdvdcss
-  ./configure  --prefix=/usr 
+  ./configure  --prefix=/usr .
   make -j$(nproc)
   make -j$(nproc) install
 )
@@ -75,7 +75,7 @@ apt-get --yes install curl build-essential autoconf  libxcb-image0-dev libxcb-im
 # dvdnav
  git clone http://code.videolan.org/videolan/libdvdnav.git
  cd libdvdnav
- ./configure --prefix=/usr 
+ ./configure --prefix=/usr .
   make -j$(nproc)
   make -j$(nproc) install
 )
@@ -85,7 +85,7 @@ apt-get --yes install curl build-essential autoconf  libxcb-image0-dev libxcb-im
   git clone http://git.videolan.org/git/libbluray.git
   cd libbluray
   ./bootstrap
-  ./configure --prefix=/usr 
+  ./configure --prefix=/usr .
   make -j$(nproc)
   make -j$(nproc) install
 )
@@ -94,7 +94,7 @@ apt-get --yes install curl build-essential autoconf  libxcb-image0-dev libxcb-im
 # ffmpeg
  git clone https://github.com/FFmpeg/FFmpeg.git
  cd ffmpeg
- ./configure --prefix=/usr  --disable-x86asm --enable-shared --disable-static --disable-debug --disable-programs --disable-doc
+ ./configure --prefix=/usr  --disable-x86asm  --disable-debug --disable-programs --disable-doc .
   make -j$(nproc)
   make -j$(nproc) install
 )
