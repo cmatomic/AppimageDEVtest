@@ -1,6 +1,7 @@
 #/bin/bash
 
 VERSION="3.0.8"
+
 #echo "deb http://in.archive.ubuntu.com/ubuntu/ xenial main" | tee /etc/apt/sources.list.d/xenial.list
 apt-get update
 apt-get --yes install python-software-properties software-properties-common
@@ -9,8 +10,10 @@ add-apt-repository ppa:jonathonf/vlc-3 --yes
 add-apt-repository universe --yes
 apt-get update
 apt-get --yes dist-upgrade
-apt-get --yes install curl build-essential autoconf  libxcb-image0-dev libxcb-image0  libtool pkg-config patchelf libtasn1-6-dev libtasn1-3-bin libbsd-dev git automake cmake libgstreamer-plugins-base1.0-dev libopencv-dev autopoint bison  gettext flex libaa1-dev libarchive-dev libaribb24-dev libasound2-dev libass-dev libavahi-client-dev libavc1394-dev libavcodec-dev libavformat-dev liblircclient-dev libavresample-dev libbluray-dev libcaca-dev libcairo2-dev libcddb2-dev libchromaprint-dev libdbus-1-dev libgtk2.0-dev libdc1394-22-dev libdca-dev libdvbpsi-dev libdvdnav-dev libdvdread-dev libebml-dev libegl1-mesa-dev libfaad-dev libflac-dev libfluidsynth-dev libfreetype6-dev libfribidi-dev libgl1-mesa-dev libgles2-mesa-dev libgnutls28-dev libgnutls-dev libgtk-3-dev libharfbuzz-dev libidn11-dev libiso9660-dev  libjack-dev libkate-dev liblircclient-dev liblivemedia-dev liblua5.2-dev libmad0-dev libmatroska-dev libmicrodns-dev libmpcdec-dev libmpeg2-4-dev libmpg123-dev libmtp-dev libncursesw5-dev libnfs-dev libnotify-dev libogg-dev libomxil-bellagio-dev libmodplug-dev libopus-dev libplacebo-dev libpng-dev libpostproc-dev libprotobuf-dev libpulse-dev libqt5svg5-dev libqt5x11extras5 libqt5x11extras5-dev libraw1394-dev libresid-builder-dev librsvg2-dev libsamplerate0-dev libsdl-image1.2-dev libsdl1.2-dev libsecret-1-dev libshine-dev libshout3-dev libsidplay2-dev libsmbclient-dev libsndio-dev libsoxr-dev libspatialaudio-dev libspeex-dev libspeexdsp-dev libssh2-1-dev libswscale-dev libsystemd-dev libtag1-dev libtheora-dev libtwolame-dev libudev-dev libupnp-dev libv4l-dev libva-dev libvcdinfo-dev libvdpau-dev libvncserver-dev libvorbis-dev libx11-dev libx264-dev libx265-dev libxcb-composite0-dev libxcb-keysyms1-dev libxcb-randr0-dev libxcb-shm0-dev libxcb-xv0-dev libxcb1-dev libxext-dev libxi-dev libxinerama-dev libxml2-dev libxpm-dev libzvbi-dev lua5.2 oss4-dev protobuf-compiler python3:native qtbase5-dev qtbase5-private-dev wayland-protocols liba52-0.7.4-dev zlib1g-dev libfreerdp-dev libgme-dev libcrystalhd-dev libvpx-dev libaacs-dev libsrtp0-dev libprojectm-qt-dev libpangomm-1.4-dev libbitstream-dev libschroedinger-dev libminizip-dev valgrind libaom-dev libasm-dev libfluidsynth-dev libdsme0-dev libwayland-dev libaribb24-dev libfdk-aac-dev libopenmpt-dev  libxcb-xinerama0-dev libgtk2.0-dev zsh
+apt-get --yes install curl build-essential autoconf  libxcb-image0-dev libxcb-image0  libtool pkg-config patchelf libtasn1-6-dev libtasn1-3-bin libbsd-dev git automake cmake libgstreamer-plugins-base1.0-dev libopencv-dev autopoint bison  gettext flex libaa1-dev libarchive-dev libaribb24-dev libasound2-dev libass-dev libavahi-client-dev libavc1394-dev libavcodec-dev libavformat-dev liblircclient-dev libavresample-dev libbluray-dev libcaca-dev libcairo2-dev libcddb2-dev libchromaprint-dev libdbus-1-dev libgtk2.0-dev libdc1394-22-dev libdca-dev libdvbpsi-dev libdvdnav-dev libdvdread-dev libebml-dev libegl1-mesa-dev libfaad-dev libflac-dev libfluidsynth-dev libfreetype6-dev libfribidi-dev libgl1-mesa-dev libgles2-mesa-dev libgnutls28-dev libgnutls-dev libgtk-3-dev libharfbuzz-dev libidn11-dev libiso9660-dev  libjack-dev libkate-dev liblircclient-dev liblivemedia-dev liblua5.2-dev libmad0-dev libmatroska-dev libmicrodns-dev libmpcdec-dev libmpeg2-4-dev libmpg123-dev libmtp-dev libncursesw5-dev libnfs-dev libnotify-dev libogg-dev libomxil-bellagio-dev libmodplug-dev libopus-dev libplacebo-dev libpng-dev libpostproc-dev libprotobuf-dev libpulse-dev libqt5svg5-dev libqt5x11extras5 libqt5x11extras5-dev libraw1394-dev libresid-builder-dev librsvg2-dev libsamplerate0-dev libsdl-image1.2-dev libsdl1.2-dev libsecret-1-dev libshine-dev libshout3-dev libsidplay2-dev libsmbclient-dev libsndio-dev libsoxr-dev libspatialaudio-dev libspeex-dev libspeexdsp-dev libssh2-1-dev libswscale-dev libsystemd-dev libtag1-dev libtheora-dev libtwolame-dev libudev-dev libupnp-dev libv4l-dev libva-dev libvcdinfo-dev libvdpau-dev libvncserver-dev libvorbis-dev libx11-dev libx264-dev libx265-dev libxcb-composite0-dev libxcb-keysyms1-dev libxcb-randr0-dev libxcb-shm0-dev libxcb-xv0-dev libxcb1-dev libxext-dev libxi-dev libxinerama-dev libxml2-dev libxpm-dev libzvbi-dev lua5.2 oss4-dev protobuf-compiler python3:native qtbase5-dev qtbase5-private-dev wayland-protocols liba52-0.7.4-dev zlib1g-dev libfreerdp-dev libgme-dev libcrystalhd-dev libvpx-dev libaacs-dev libsrtp0-dev libprojectm-qt-dev libpangomm-1.4-dev libbitstream-dev libschroedinger-dev libminizip-dev valgrind libaom-dev libasm-dev libfluidsynth-dev libdsme0-dev libwayland-dev libaribb24-dev libfdk-aac-dev libopenmpt-dev  libxcb-xinerama0-dev libgtk2.0-dev libssl-dev tclsh zsh
 #apt-get build-dep vlc --yes
+
+
 
 (
 
@@ -26,7 +29,7 @@ apt-get --yes install curl build-essential autoconf  libxcb-image0-dev libxcb-im
   git clone https://github.com/videolabs/libdsm.git
   cd libdsm
   ./bootstrap
-  ./configure --prefix=/usr 
+  ./configure --prefix=/usr
   make -j$(nproc)
   make -j$(nproc) install
 )
@@ -41,6 +44,90 @@ apt-get --yes install curl build-essential autoconf  libxcb-image0-dev libxcb-im
 
 (
 
+ git clone https://github.com/Haivision/srt.git
+ cd srt
+ cmake -DCMAKE_INSTALL_PREFIX=/usr .
+ make -j$(nproc)
+ make -j$(nproc) install
+
+)
+
+
+
+# x264
+http://git.videolan.org/git/x264.git
+  cd x264
+  ./configure --prefix="$PREFIX" --enable-shared --disable-cli --enable-strip
+  make clean
+  make -j$JOBS V=0
+  make install
+  cd -
+fi
+# x265
+wget 
+  rm -rf x265/source/build
+  mkdir -p x265/source/build
+  cd x265/source/build
+  cmake .. -DCMAKE_CXX_FLAGS="$CXXFLAGS" -DCMAKE_SHARED_LINKER_FLAGS="$LDFLAGS -s" -DCMAKE_INSTALL_PREFIX="$PREFIX" -DENABLE_CLI="OFF" -DENABLE_LIBNUMA="OFF"
+  make -j$JOBS
+  make install
+  cd -
+fi
+# dvdcss
+  git clone http://code.videolan.org/videolan/libdvdcss.git
+  cd libdvdcss
+  autoreconf -if
+  ./configure --prefix="$PREFIX" --enable-shared --disable-static
+  make -j$(nproc)
+  make -j$(nproc) install
+  cd -
+fi
+# dvdread
+http://code.videolan.org/videolan/libdvdread.git
+  cd libdvdread
+  autoreconf -if
+  ./configure --prefix="$PREFIX" --enable-shared --disable-static --with-libdvdcss
+  make clean
+  make -j$JOBS V=0
+  make install-strip
+  cd -
+fi
+# dvdnav
+http://code.videolan.org/videolan/libdvdnav.git
+  cd libdvdnav
+  autoreconf -if
+  ./configure --prefix="$PREFIX" --enable-shared --disable-static
+  make clean
+  make -j$JOBS V=0
+  make install-strip
+  cd -
+fi
+# bluray
+ http://git.videolan.org/git/libbluray.git
+  cd libbluray
+  git submodule init
+  git submodule update
+  autoreconf -if
+  ./configure --prefix="$PREFIX" --enable-shared --disable-static --disable-bdjava-jar --disable-doxygen-doc
+  make clean
+  make -j$JOBS V=0
+  make install-strip
+  cd -
+fi
+# ffmpeg
+ git clone https://github.com/FFmpeg/FFmpeg.git
+ cd ffmpeg
+ ./configure --prefix="$PREFIX" --enable-shared --disable-static --disable-debug --disable-programs --disable-doc
+  make -j$(nproc)
+  make -j$(nproc) install
+  cd -
+fi
+
+
+
+
+
+(
   wget http://download.videolan.org/pub/vlc/$VERSION/vlc-$VERSION.tar.xz
   tar xJf vlc-$VERSION.tar.xz
   cd vlc-$VERSION
@@ -63,29 +150,41 @@ apt-get --yes install curl build-essential autoconf  libxcb-image0-dev libxcb-im
   ./vlc-$VERSION/build/usr/lib/vlc/vlc-cache-gen ./vlc-$VERSION/build/usr/lib/vlc/plugins
 )
 
-(
-
-#rm -f ./vlc-$VERSION/build/usr/lib/libfreetype.so.6
-#rm -f /usr/lib/libfreetype.so.6
-#rm -f usr/lib/libfreetype.so.6
-#find  /usr/lib/x86_64-linux-gnu/ -maxdepth 1 -name "libaacs.so.0" -exec patchelf --set-rpath '$ORIGIN/../' {} \;
-#find  /usr/lib/x86_64-linux-gnu/ -maxdepth 1 -name "libaacs.so.0.5.1" -exec patchelf --set-rpath '$ORIGIN/../' {} \;
-#find ./libbdplus/build/usr/lib/x86_64-linux-gnu/ -maxdepth 1 -name "lib*.so*" -exec patchelf --set-rpath '$ORIGIN/../' {} \;
-#patchelf --set-rpath '$ORIGIN/../../lib' plugins/platforms/libqxcb.so
-#patchelf --set-rpath '$ORIGIN/../lib libexec/QtWebEngineProcess
-#find /usr/lib/x86_64-linux-gnu/qt5/plugins/platforms/libqxcb.so  -exec patchelf --set-rpath '$ORIGIN/../' {} \;
-find ./vlc-$VERSION/build/usr/lib/ -maxdepth 1 -name "lib*.so*" -exec patchelf --set-rpath '$ORIGIN/../' {} \;
+#find ./vlc-$VERSION/build/usr/lib/ -maxdepth 1 -name "lib*.so*" -exec patchelf --set-rpath '$ORIGIN/../' {} \;
 find ./vlc-$VERSION/build/usr/lib/vlc/ -maxdepth 1 -name "lib*.so*" -exec patchelf --set-rpath '$ORIGIN/../' {} \;
 find ./vlc-$VERSION/build/usr/lib/vlc/plugins/ -name "lib*.so*" -exec patchelf --set-rpath '$ORIGIN/../../:$ORIGIN/../../../' {} \;
-#rm -f ./vlc-$VERSION/build/usr/lib/libfreetype.so.6
+
 wget "https://github.com/probonopd/linuxdeployqt/releases/download/continuous/linuxdeployqt-continuous-x86_64.AppImage"
 chmod a+x ./linuxdeployqt-continuous-x86_64.AppImage
-LINUX_DEPLOY_QT_EXCLUDE_COPYRIGHTS=true appimage-wrapper linuxdeployqt-continuous-x86_64.AppImage vlc-$VERSION/build/org.videolan.vlc.desktop -bundle-non-qt-libs
-LINUX_DEPLOY_QT_EXCLUDE_COPYRIGHTS=true ARCH=x86_64 appimage-wrapper linuxdeployqt-continuous-x86_64.AppImage vlc-$VERSION/build/org.videolan.vlc.desktop -exclude-libs=libfreetype.so.6 -appimage
-
-)
+LINUX_DEPLOY_QT_EXCLUDE_COPYRIGHTS=true appimage-wrapper linuxdeployqt-continuous-x86_64.AppImage vlc-$VERSION/build/org.videolan.vlc.desktop -bundle-non-qt-libs -exclude-libs=libfreetype.so.6
+LINUX_DEPLOY_QT_EXCLUDE_COPYRIGHTS=true ARCH=x86_64 appimage-wrapper linuxdeployqt-continuous-x86_64.AppImage vlc-$VERSION/build/org.videolan.vlc.desktop -appimage
 
 mkdir -p release
 
 cp ./VLC_media_player*.AppImage release/
 md5sum ./VLC_media_player*.AppImage > release/MD5.txt
+
+# Reasons for disabling features: base on multimedia team debian rules for vlc 
+# https://salsa.debian.org/multimedia-team/vlc/blob/master/debian/rules
+# chromecast:(protobuf) bug in gnutls-bin, preventing it from working correctly (during the build the binary was segfaulting)on Ubuntu xenial
+# https://trac.videolan.org/vlc/ticket/18329
+# crystalhd: unusble without firmware (#934242)
+# d3d11va: Windows only
+# decklink: not in Debian/Ubuntu xenial
+# directx: Windows only
+# dxva2: Windows only
+# fluidlite: fluidsynth is enabled
+# freerdp: scheduled for removal (#888323)
+# goom: not in Debian/Ubuntu xenial
+# gst-decode: not needed when having libavcodec
+# libtar: security issue (#737534)
+# macosx*: MacOX only
+# mfx: currently not supported on Linux
+# opencv: developer plugin not required by end users
+# projectm: broken
+# schroedinger: removed from Debian (#845037)
+# sparkle: MacOS X only
+# telx: incompatible with zvbi
+# vpx: not needed when having libavcodec
+# vsxu: not in Debian/Ubuntu xenial
+# wasapi: Windows only
