@@ -50,13 +50,15 @@ apt-get --yes install curl build-essential autoconf  libxcb-image0-dev libxcb-im
   chmod 755 -R ./vlc-$VERSION/build
   cd build
   cp ../../org.videolan.vlc.desktop ./
-  #cp ../../AppRun .
-  #chmod +x AppRun
   cp ./usr/share/icons/hicolor/256x256/apps/vlc.png ./
   mkdir -p ./usr/plugins/iconengines/
-  cp /usr/lib/x86_64-linux-gnu/qt5/plugins/iconengines/libqsvgicon.so ./usr/plugins/iconengines/
   mkdir -p ./usr/plugins/platforms/
-  cp /usr/lib/x86_64-linux-gnu/qt5/plugins/platforms/libqxcb.so ./usr/plugins/platforms/
+  mkdir -p ./usr/plugins/platformthemes/
+  mkdir -p ./usr/plugins/styles/
+  cp /usr/lib/x86_64-linux-gnu/qt5/plugins/iconengines/libqsvgicon.so  ./usr/plugins/iconengines/
+  cp /usr/lib/x86_64-linux-gnu/qt5/plugins/platforms/libqxcb.so        ./usr/plugins/platforms/
+  cp /usr/lib/x86_64-linux-gnu/qt5/plugins/platformthemes/libqgtk2.so  ./usr/plugins/platformthemes/
+  cp /usr/lib/x86_64-linux-gnu/qt5/plugins/styles/libqgtk2style.so     ./usr/plugins/styles/
   rm usr/lib/vlc/plugins/plugins.dat
   ./vlc-$VERSION/build/usr/lib/vlc/vlc-cache-gen ./vlc-$VERSION/build/usr/lib/vlc/plugins
 )
@@ -87,4 +89,3 @@ mkdir -p release
 
 cp ./VLC_media_player*.AppImage release/
 md5sum ./VLC_media_player*.AppImage > release/MD5.txt
-#libqt5gui5
