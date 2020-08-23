@@ -1,6 +1,6 @@
 #/bin/bash
 
-VERSION="3.0.8"
+VERSION="3.0.11"
 
 #echo "deb http://in.archive.ubuntu.com/ubuntu/ xenial main" | tee /etc/apt/sources.list.d/xenial.list
 apt-get update
