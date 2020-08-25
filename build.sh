@@ -121,8 +121,8 @@ wget "https://github.com/probonopd/linuxdeployqt/releases/download/continuous/li
 
 chmod a+x ./linuxdeployqt-continuous-x86_64.AppImage
 
-LINUX_DEPLOY_QT_EXCLUDE_COPYRIGHTS=true appimage-wrapper linuxdeployqt-continuous-x86_64.AppImage vlc-$VERSION/build/org.videolan.vlc.desktop  -bundle-non-qt-libs -exclude-libs=libfreetype.so.6 -updateinformation="gh-releases-zsync|cmatomic|AppimageDEVtest|continuous|VLC_media_player.3.0.11-x86_64.AppImage.zsync"
-LINUX_DEPLOY_QT_EXCLUDE_COPYRIGHTS=true ARCH=x86_64 appimage-wrapper linuxdeployqt-continuous-x86_64.AppImage  vlc-$VERSION/build/org.videolan.vlc.desktop -appimage -updateinformation="gh-releases-zsync|cmatomic|AppimageDEVtest|continuous|VLC_media_player.3.0.11-x86_64.AppImage.zsync"
+LINUX_DEPLOY_QT_EXCLUDE_COPYRIGHTS=true appimage-wrapper linuxdeployqt-continuous-x86_64.AppImage vlc-$VERSION/build/org.videolan.vlc.desktop  -bundle-non-qt-libs -exclude-libs=libfreetype.so.6 -updateinformation="gh-releases-zsync|cmatomic|AppimageDEVtest|continuous|VLC_media_player.*$VERSION*-x86_64.AppImage.zsync"
+LINUX_DEPLOY_QT_EXCLUDE_COPYRIGHTS=true ARCH=x86_64 appimage-wrapper linuxdeployqt-continuous-x86_64.AppImage  vlc-$VERSION/build/org.videolan.vlc.desktop -appimage -updateinformation="gh-releases-zsync|cmatomic|AppimageDEVtest|continuous|VLC_media_player.*$VERSION*-x86_64.AppImage.zsync"
 mkdir -p release
 cp ./VLC_media_player*.zsync release/
 cp ./VLC_media_player*.AppImage release/
