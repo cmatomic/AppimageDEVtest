@@ -123,7 +123,7 @@ chmod a+x ./linuxdeployqt-continuous-x86_64.AppImage
 #-updateinformation="gh-releases-zsync|cmatomic|AppimageDEVtest|continuous|VLC_media_player.*$VERSION*-x86_64.AppImage.zsync"
 mkdir -p release
 LINUX_DEPLOY_QT_EXCLUDE_COPYRIGHTS=true appimage-wrapper linuxdeployqt-continuous-x86_64.AppImage vlc-$VERSION/build/org.videolan.vlc.desktop  -bundle-non-qt-libs -exclude-libs=libfreetype.so.6
-LINUX_DEPLOY_QT_EXCLUDE_COPYRIGHTS=true ARCH=x86_64 appimage-wrapper linuxdeployqt-continuous-x86_64.AppImage  vlc-$VERSION/build/org.videolan.vlc.desktop -updateinformation="*$UPD_INFO*"  -appimage
+LINUX_DEPLOY_QT_EXCLUDE_COPYRIGHTS=true ARCH=x86_64 appimage-wrapper linuxdeployqt-continuous-x86_64.AppImage  vlc-$VERSION/build/org.videolan.vlc.desktop -guess   -appimage
 mkdir -p release
 #zsyncmake ./VLC_media_player*.AppImage
 cp ./VLC_media_player*.zsync release/
