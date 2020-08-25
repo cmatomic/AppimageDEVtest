@@ -126,4 +126,4 @@ LINUX_DEPLOY_QT_EXCLUDE_COPYRIGHTS=true ARCH=x86_64 appimage-wrapper linuxdeploy
 mkdir -p release
 cp ./VLC_media_player*.zsync release/
 cp ./VLC_media_player*.AppImage release/
-md5sum ./VLC_media_player*.AppImage > release/MD5.txt
+md5sum ./VLC_media_player*.AppImage > release/VLC_media_player*.AppImage.md5.txt
