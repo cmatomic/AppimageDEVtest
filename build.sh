@@ -117,7 +117,7 @@ find ./vlc-$VERSION/build/usr/lib/vlc/plugins/ -name "lib*.so*" -exec patchelf -
 
 #export UPD_INFO="gh-releases-zsync|linuxdeploy|linuxdeploy-plugin-qt|continuous|linuxdeploy-plugin-qt-$ARCH.AppImage"
 
-"export UPD_INFO="gh-releases-zsync|cmatomic|AppimageDEVtest|continuous|VLC_media_player.3.0.11-x86_64.AppImage.zsync"
+#export UPD_INFO="gh-releases-zsync|cmatomic|AppimageDEVtest|continuous|VLC_media_player.3.0.11-x86_64.AppImage.zsync"
 #export UPDATE_INFORMATION="gh-releases-zsync|cmatomic|AppimageDEVtest|continuous|VLC_media_player*$VERSION*-x86_64.AppImage.zsync"
 #export SIGN=1
 #export VERBOSE=1
