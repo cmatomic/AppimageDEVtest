@@ -1,6 +1,6 @@
 #/bin/bash
 
-export VERSION="3.0.10"
+export VERSION="3.0.11"
 
 #echo "deb http://in.archive.ubuntu.com/ubuntu/ xenial main" | tee /etc/apt/sources.list.d/xenial.list
 apt-get update
@@ -117,10 +117,10 @@ find ./vlc-$VERSION/build/usr/lib/vlc/plugins/ -name "lib*.so*" -exec patchelf -
 
 #export UPD_INFO="gh-releases-zsync|linuxdeploy|linuxdeploy-plugin-qt|continuous|linuxdeploy-plugin-qt-$ARCH.AppImage"
 
-
-export UPDATE_INFORMATION="gh-releases-zsync|cmatomic|AppimageDEVtest|continuous|VLC_media_player*$ARCH*.AppImage.zsync"
-#export SIGN=1
-#export VERBOSE=1
+export UPD_INFO="gh-releases-zsync|cmatomic|AppimageDEVtest|continuous|VLC_media_player*$VERSION*-x86_64.AppImage.zsync"
+#export UPDATE_INFORMATION="gh-releases-zsync|cmatomic|AppimageDEVtest|continuous|VLC_media_player*$VERSION*-x86_64.AppImage.zsync"
+export SIGN=1
+export VERBOSE=1
 
 wget "https://github.com/probonopd/linuxdeployqt/releases/download/continuous/linuxdeployqt-continuous-x86_64.AppImage"
 #wget "https://github.com/AppImage/AppImageKit/releases/download/continuous/appimagetool-x86_64.AppImage"
