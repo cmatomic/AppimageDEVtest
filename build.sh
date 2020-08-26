@@ -14,6 +14,12 @@ apt-get --yes install curl build-essential autoconf zsync  rsync  meson ninja-bu
 #apt-get build-dep vlc --yes
 
 (
+python3 -m pip install meson
+python3 -m pip install ninja
+
+)
+
+(
 
 wget https://github.com/intel/libva/releases/download/2.8.0/libva-2.8.0.tar.bz2
 tar -xvjf libva-2.8.0.tar.bz2
