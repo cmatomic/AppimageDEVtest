@@ -19,7 +19,7 @@ wget https://github.com/intel/libva/releases/download/2.8.0/libva-2.8.0.tar.bz2
 tar -xvjf libva-2.8.0.tar.bz2
 cd libva-2.8.0
 ./autogen.sh
-./configure 
+./configure --prefix=/usr
   make -j$(nproc)
   make -j$(nproc) install
 
