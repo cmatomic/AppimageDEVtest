@@ -15,26 +15,26 @@ apt-get --yes install curl build-essential autoconf zsync  rsync  meson ninja-bu
 
 (
 
-#wget https://github.com/intel/libva/releases/download/2.8.0/libva-2.8.0.tar.bz2
-#tar -xvjf libva-2.8.0.tar.bz2
-#cd libva-2.8.0
-#./autogen.sh
-#./configure --prefix=/usr
-  #make -j$(nproc)
- #make -j$(nproc) install
+wget https://github.com/intel/libva/releases/download/2.8.0/libva-2.8.0.tar.bz2
+tar -xvjf libva-2.8.0.tar.bz2
+cd libva-2.8.0
+./autogen.sh
+./configure 
+ make -j$(nproc)
+ make -j$(nproc) install
 
 )
 
 
 (
 
-#wget https://github.com/haasn/libplacebo/archive/v2.72.0.tar.gz
-#tar -vzxf v2.72.0.tar.gz
-#cd libplacebo-2.72.0
-#DIR=./build
-#meson $DIR
-#ninja -C$DIR
-#ninja -Cbuild install
+wget https://github.com/haasn/libplacebo/archive/v2.72.0.tar.gz
+tar -vzxf v2.72.0.tar.gz
+cd libplacebo-2.72.0
+DIR=./build
+meson $DIR
+ninja -C$DIR
+ninja -Cbuild install
 
 )
 
