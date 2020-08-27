@@ -23,11 +23,9 @@ export PKG_CONFIG=/usr/bin/pkg-config
 #pip3 --user  install ninja
 (
 
- wget https://github.com/mesonbuild/meson/archive/master.zip
- unzip  master.zip
- unzip meson-master.zip
- cd master
- cd meson-master
+ wget https://github.com/mesonbuild/meson/releases/download/0.55.1/meson-0.55.1.tar.gz
+ tar -vzxf meson-0.55.1.tar.gz
+ cd meson-0.55.1
  python3 setup.py install
  
 )
