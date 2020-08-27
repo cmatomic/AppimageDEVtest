@@ -2,7 +2,7 @@
 
 export VERSION="4.0.0-dev"
 
-#echo "deb http://in.archive.ubuntu.com/ubuntu/ xenial main" | tee /etc/apt/sources.list.d/xenial.list
+echo "deb http://in.archive.ubuntu.com/ubuntu/ xenial main" | tee /etc/apt/sources.list.d/xenial.list
 apt-get update
 apt-get --yes install python-software-properties software-properties-common
 add-apt-repository ppa:jonathonf/ffmpeg-4 --yes
@@ -21,18 +21,6 @@ export PKG_CONFIG=/usr/bin/pkg-config
 #pip3 install ninja
 #pip3 --user install meson
 #pip3 --user  install ninja
-(
- 
- git clone https://github.com/mesonbuild/meson.git /path/to/sourcedir
- 
- cd /path/to/source/root
- meson --prefix /usr --buildtype=plain builddir -Dc_args=... -Dcpp_args=... -Dc_link_args=... -Dcpp_link_args=...
- meson compile -C builddir
- meson test -C builddir
- DESTDIR=/path/to/staging/root meson install -C builddir
-
-
-)
 
 
 (
