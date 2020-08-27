@@ -13,8 +13,8 @@ apt-get --yes dist-upgrade
 apt-get --yes install curl build-essential autoconf zsync  rsync libbsd0 libvulkan-dev libdsme0-dev libbsd0-dev libbsd-dev python3-pip libxcb-xkb-dev libpipeline1 libdrm-dev  libfaad-dev libmpcdec-dev libxcb-image0-dev libxcb-image0  libtool pkg-config patchelf libtasn1-6-dev libtasn1-3-bin libbsd-dev git automake cmake libgstreamer-plugins-base1.0-dev libopencv-dev autopoint bison  gettext flex libaa1-dev libarchive-dev libaribb24-dev libasound2-dev libass-dev libavahi-client-dev libavc1394-dev libavcodec-dev libavformat-dev liblircclient-dev libavresample-dev libbluray-dev libcaca-dev libcairo2-dev libcddb2-dev libchromaprint-dev libdbus-1-dev libgtk2.0-dev libdc1394-22-dev libdca-dev libdvbpsi-dev libebml-dev libegl1-mesa-dev libfaad-dev libflac-dev libfluidsynth-dev libfreetype6-dev libfribidi-dev libgl1-mesa-dev libgles2-mesa-dev libgnutls28-dev libgnutls-dev libgtk-3-dev libharfbuzz-dev libidn11-dev libiso9660-dev  libjack-dev libkate-dev liblircclient-dev liblivemedia-dev liblua5.2-dev libmad0-dev libmatroska-dev libmicrodns-dev libmpcdec-dev libmpeg2-4-dev libmpg123-dev libmtp-dev libncursesw5-dev libnfs-dev libnotify-dev libogg-dev libomxil-bellagio-dev libmodplug-dev libopus-dev libplacebo-dev libpng-dev libpostproc-dev libprotobuf-dev libpulse-dev libqt5svg5-dev libqt5x11extras5 libqt5x11extras5-dev libraw1394-dev libresid-builder-dev librsvg2-dev libsamplerate0-dev libsdl-image1.2-dev libsdl1.2-dev libsecret-1-dev libshine-dev libshout3-dev libsidplay2-dev libsmbclient-dev libsndio-dev libsoxr-dev libspatialaudio-dev libspeex-dev libspeexdsp-dev libssh2-1-dev libswscale-dev libsystemd-dev libtag1-dev libtheora-dev libtwolame-dev libudev-dev libupnp-dev libv4l-dev libva-dev libvcdinfo-dev libvdpau-dev libvncserver-dev libvorbis-dev libx11-dev libx264-dev libx265-dev libxcb-composite0-dev libxcb-keysyms1-dev libxcb-randr0-dev libxcb-shm0-dev libxcb-xv0-dev libxcb1-dev libxext-dev libxi-dev libxinerama-dev libxml2-dev libxpm-dev libzvbi-dev lua5.2 oss4-dev protobuf-compiler python3:native qtbase5-dev qtbase5-private-dev wayland-protocols liba52-0.7.4-dev zlib1g-dev libfreerdp-dev libgme-dev libcrystalhd-dev libvpx-dev libaacs-dev libsrtp0-dev libprojectm-qt-dev libpangomm-1.4-dev libbitstream-dev libschroedinger-dev libminizip-dev valgrind libaom-dev libasm-dev libfluidsynth-dev libdsme0-dev libwayland-dev libaribb24-dev libfdk-aac-dev libopenmpt-dev  libxcb-xinerama0-dev libgtk2.0-dev libssl-dev tclsh zsh
 #apt-get build-dep vlc --yes 
 #meson ninja-build
-pip3 install meson
-pip3 install ninja
+python3 -m pip install meson
+python3 -m pip install ninja
 
 (
 
@@ -116,7 +116,7 @@ ninja -Cbuild install
 (
 
  git clone https://github.com/videolan/dav1d.git
- cd david
+ cd dav1d
  DIR=./build
  meson $DIR
  ninja -C$DIR
@@ -148,7 +148,8 @@ ninja -Cbuild install
 (
 
  wget https://github.com/sahlberg/libsmb2/archive/v3.0.0.tar.gz
- tar -vzxf libsmb2-3.0.0
+ tar -vzxf v3.0.0.tar.gz
+ cd libsmb2-3.0.0
  ./bootstrap
  ./configure --prefix=/usr
   make -j$(nproc)
