@@ -15,12 +15,13 @@ for pkg in $(dpkg --get-selections | egrep -v 'deinstall' | egrep python | awk '
 export PKG_CONFIG=/usr/bin/pkg-config
 #apt-get build-dep vlc --yes 
 #meson ninja-build
-python3 -m pip install -U setuptools
-python3 -m pip install meson
-python3 -m pip install ninja
-#pip3 install -U setuptools
-#pip3 install meson
-#pip3 install ninja
+#python3 -m pip install -U setuptools
+#python3 -m pip install meson
+#python3 -m pip install ninja
+pip3 list
+pip3 install -U setuptools
+pip3 install meson
+pip3 install ninja
 #pip3 --user install meson
 #pip3 --user  install ninja
 
