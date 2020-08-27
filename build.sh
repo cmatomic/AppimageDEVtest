@@ -17,6 +17,8 @@ apt-get --yes install curl build-essential autoconf zsync  rsync libbsd0 libvulk
 #python3 -m pip install ninja
 pip3 install meson
 pip3 install ninja
+pip3 --user install meson
+pip3 --user  install ninja
 export PKG_CONFIG=/usr/bin/pkg-config
 
 (
