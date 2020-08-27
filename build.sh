@@ -17,18 +17,20 @@ export PKG_CONFIG=/usr/bin/pkg-config
 #meson ninja-build
 #python3 -m pip install meson
 #python3 -m pip install ninja
-#pip3 install meson
-#pip3 install ninja
+pip3 install -U setuptools
+pip3 install meson
+pip3 install ninja
 #pip3 --user install meson
 #pip3 --user  install ninja
-(
 
- wget https://github.com/mesonbuild/meson/releases/download/0.55.1/meson-0.55.1.tar.gz
- tar -vzxf meson-0.55.1.tar.gz
- cd meson-0.55.1
- python3 setup.py install
+#(
+
+ #wget https://github.com/mesonbuild/meson/releases/download/0.55.1/meson-0.55.1.tar.gz
+ #tar -vzxf meson-0.55.1.tar.gz
+ #cd meson-0.55.1
+# python3 setup.py install
  
-)
+#)
 
 
 
