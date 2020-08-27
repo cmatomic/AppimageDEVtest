@@ -21,6 +21,16 @@ export PKG_CONFIG=/usr/bin/pkg-config
 #pip3 install ninja
 #pip3 --user install meson
 #pip3 --user  install ninja
+(
+
+ wget https://github.com/mesonbuild/meson/archive/master.zip
+ unzip meson-master.zip
+ cd meson-master
+ python3 setup.py install
+ 
+)
+
+
 
 
 (
@@ -40,10 +50,10 @@ cd libva-2.8.0
 wget https://github.com/haasn/libplacebo/archive/v2.72.0.tar.gz
 tar -vzxf v2.72.0.tar.gz
 cd libplacebo-2.72.0
-DIR=./build
-meson $DIR
-ninja -C$DIR
-ninja -Cbuild install
+ mkdir build && cd build
+ meson
+ ninja 
+ ninja  install
 
 )
 
@@ -124,10 +134,10 @@ ninja -Cbuild install
 
  git clone https://github.com/videolan/dav1d.git
  cd dav1d
- DIR=./build
- meson $DIR
- ninja -C$DIR
- ninja -Cbuild install
+ mkdir build && cd build
+ meson
+ ninja 
+ ninja  install
  
 )
 
@@ -145,7 +155,6 @@ ninja -Cbuild install
   wget https://code.videolan.org/midchildan/aribb25/-/archive/master/aribb25-master.tar.bz2
   tar -xvjf aribb25-master.tar.bz2
   cd aribb25-master
-  ./bootstrap
   ./configure --prefix=/usr
   make -j$(nproc)
   make -j$(nproc) install
