@@ -18,6 +18,10 @@ export PKG_CONFIG=/usr/bin/pkg-config
 #python3 -m pip install -U setuptools
 #python3 -m pip install meson
 #python3 -m pip install ninja
+(
+wget https://bootstrap.pypa.io/get-pip.py -o get-pip.py
+python3 get-pip.py
+)
 python3 -m pip install --upgrade pip setuptools wheel
 pip3 list
 pip3 install -U setuptools
