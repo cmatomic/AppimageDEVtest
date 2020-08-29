@@ -33,9 +33,10 @@ export PKG_CONFIG_PATH=/usr/lib/pkgconfig
 (
  wget https://github.com/KhronosGroup/glslang/releases/download/master-tot/glslang-master-linux-Release.zip
  unzip glslang-master-linux-Release
- cd glslang-master-linux-Release
+ cd ./glslang-master-linux-Release
  cp ./bin/glslangValidator /bin/
  cp -r ./include   /
+ cp -r ./lib  /
 )
 #(
 #git clone https://github.com/google/shaderc $SOURCE_DIR
