@@ -59,16 +59,28 @@ export PKG_CONFIG_PATH=/usr/lib/pkgconfig
  python3 setup.py install
  pip3 install meson
  pip3 install ninja
+ pip3 install gssapi
+ 
 )
 
+(
+git clone https://github.com/google/shaderc $SOURCE_DIR
+cd $SOURCE_DIR
+./utils/git-sync-deps
+cd $SOURCE_DIR/
+cd $BUILD_DIR
+cmake -GNinja -DCMAKE_BUILD_TYPE={Debug|Release|RelWithDebInfo} $SOURCE_DIR
+ninja
+ninja install 
+)
 
 (
 
 wget https://github.com/intel/libva/releases/download/2.8.0/libva-2.8.0.tar.bz2
 tar -xvjf libva-2.8.0.tar.bz2
 cd libva-2.8.0
-./autogen.sh --prefix=/usr --libdir=/usr/lib/x86_64-linux-gnu
-#./configure 
+./autogen.sh
+./configure --prefix=/usr --libdir=/usr/lib/x86_64-linux-gnu
  make -j$(nproc)
  make -j$(nproc) install
 
