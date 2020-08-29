@@ -121,7 +121,7 @@ cd libva-2.8.0
  make -j$(nproc)
  make -j$(nproc) install
 
-#)
+)
 
 (
   git clone https://github.com/videolabs/libdsm.git
