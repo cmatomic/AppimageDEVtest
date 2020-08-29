@@ -77,7 +77,7 @@ export PKG_CONFIG_PATH=/usr/lib/pkgconfig
  cd BUILD_DIR
  cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX="$(pwd)/install" ../glslang
  make -j4 install ../glslang
-#)
+)
 #(
 #git clone https://github.com/google/shaderc $SOURCE_DIR
 #cd $SOURCE_DIR
@@ -121,7 +121,7 @@ cd libva-2.8.0
  make -j$(nproc)
  make -j$(nproc) install
 
-)
+#)
 
 (
   git clone https://github.com/videolabs/libdsm.git
