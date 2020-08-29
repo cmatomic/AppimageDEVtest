@@ -59,7 +59,7 @@ export PKG_CONFIG_PATH=/usr/lib/pkgconfig
  python3 setup.py install
  pip3 install meson
  pip3 install ninja
- pip3 install gssapi
+ pip install gssapi
  
 )
 
