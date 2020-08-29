@@ -31,6 +31,16 @@ export PKG_CONFIG_PATH=/usr/lib/pkgconfig
  
 )
 
+(
+
+ wget http://pkgconfig.freedesktop.org/releases/pkg-config-0.29.2.tar.gz
+ tar -vzxf pkg-config-0.29.2.tar.gz
+ cd pkg-config-0.29.2
+ ./configure
+ make -j$(nproc)
+ make -j$(nproc) install
+
+)
 
 (
 
@@ -173,16 +183,16 @@ cd libva-2.8.0
   
 )
 
-(
+#(
 
- git clone https://github.com/videolan/dav1d.git
- cd dav1d
- mkdir build && cd build
- meson --prefix=/usr
- ninja 
- ninja  install
+ #git clone https://github.com/videolan/dav1d.git
+ #cd dav1d
+ #mkdir build && cd build
+ #meson --prefix=/usr
+ #ninja 
+ #ninja  install
  
-)
+#)
 
 (
 
