@@ -30,13 +30,27 @@ export PKG_CONFIG_PATH=/usr/lib/pkgconfig
  
 )
 
+
 (
- wget https://github.com/KhronosGroup/glslang/releases/download/master-tot/glslang-master-linux-Release.zip
- unzip glslang-master-linux-Release
- cd ./glslang-master-linux-Release
- cp ./bin/glslangValidator /bin/
- cp -r ./include   /
- cp -r ./lib  /
+
+ wget https://ftp.gnu.org/pub/gnu/gettext/gettext-0.21.tar.gz
+ tar -vzxf gettext-0.21.tar.gz
+ cd gettext-0.21
+ ./configure
+ make -j$(nproc)
+ make -j$(nproc) install
+
+)
+
+(
+ git clone https://github.com/KhronosGroup/glslang.git
+ cd glslang
+ git clone https://github.com/google/googletest.git External/googletest
+ ./update_glslang_sources.py
+ cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX="$(pwd)/install" $SOURCE_DIR
+ mkdir -p $BUILD_DIR
+ cd $BUILD_DIR
+ make -j4 install
 )
 #(
 #git clone https://github.com/google/shaderc $SOURCE_DIR
