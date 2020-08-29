@@ -75,7 +75,7 @@ export PKG_CONFIG_PATH=/usr/lib/pkgconfig
  ./update_glslang_sources.py
  mkdir -p BUILD_DIR
  cd BUILD_DIR
- cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX="$(pwd)/install" ../glslang
+ cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr" ../glslang
  make -j4 install ../glslang
 )
 #(
