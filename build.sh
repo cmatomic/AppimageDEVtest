@@ -43,6 +43,16 @@ export PKG_CONFIG_PATH=/usr/lib/pkgconfig
 )
 
 (
+ git clone https://github.com/KhronosGroup/SPIRV-Headers.git
+ cd SPIRV-Headers
+ mkdir build
+ cd build
+ cmake ..
+ cmake --build . --target install
+ 
+)
+
+(
  git clone https://github.com/KhronosGroup/glslang.git
  cd glslang
  git clone https://github.com/google/googletest.git External/googletest
@@ -50,7 +60,7 @@ export PKG_CONFIG_PATH=/usr/lib/pkgconfig
  mkdir -p BUILD_DIR
  cd BUILD_DIR
  cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX="$(pwd)/install" ../glslang
- make -j4 install
+ make -j4 install ../glslang
 )
 #(
 #git clone https://github.com/google/shaderc $SOURCE_DIR
