@@ -47,9 +47,9 @@ export PKG_CONFIG_PATH=/usr/lib/pkgconfig
  cd glslang
  git clone https://github.com/google/googletest.git External/googletest
  ./update_glslang_sources.py
- cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX="$(pwd)/install" $SOURCE_DIR
- mkdir -p $BUILD_DIR
- cd $BUILD_DIR
+ mkdir -p BUILD_DIR
+ cd BUILD_DIR
+ cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX="$(pwd)/install" ../glslang
  make -j4 install
 )
 #(
