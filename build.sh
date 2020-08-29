@@ -59,20 +59,37 @@ export PKG_CONFIG_PATH=/usr/lib/pkgconfig
  python3 setup.py install
  pip3 install meson
  pip3 install ninja
- pip install gssapi
+ #pip install gssapi
  
 )
 
 (
-git clone https://github.com/google/shaderc $SOURCE_DIR
-cd $SOURCE_DIR
-./utils/git-sync-deps
-cd $SOURCE_DIR/
-cd $BUILD_DIR
-cmake -GNinja -DCMAKE_BUILD_TYPE={Debug|Release|RelWithDebInfo} $SOURCE_DIR
-ninja
-ninja install 
+
+ git clone https://github.com/pythongssapi/python-gssapi.git
+ python3 setup.py build
+ python3 setup.py install
+ 
 )
+
+(
+
+ git clone https://github.com/Microsoft/vcpkg.git
+ cd vcpkg
+./bootstrap-vcpkg.sh
+./vcpkg integrate install
+./vcpkg install glslang
+
+(
+#(
+#git clone https://github.com/google/shaderc $SOURCE_DIR
+#cd $SOURCE_DIR
+#./utils/git-sync-deps
+#cd $SOURCE_DIR/
+#cd $BUILD_DIR
+#cmake -GNinja -DCMAKE_BUILD_TYPE={Debug|Release|RelWithDebInfo} $SOURCE_DIR
+#ninja
+#ninja install 
+#)
 
 (
 
