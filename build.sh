@@ -31,12 +31,11 @@ export PKG_CONFIG_PATH=/usr/lib/pkgconfig
 )
 
 (
- git clone https://github.com/KhronosGroup/glslang.git
- cd glslang
- mkdir BUILD_DIR
- cd BUILD_DIR
- cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX="$(pwd)/install"
- make -j4 install
+ wget https://github.com/KhronosGroup/glslang/releases/download/master-tot/glslang-master-linux-Release.zip
+ unzip glslang-master-linux-Release
+ cd glslang-master-linux-Release
+ cp ./bin/glslangValidator /bin/
+ cp -r ./include   /
 )
 #(
 #git clone https://github.com/google/shaderc $SOURCE_DIR
