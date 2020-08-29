@@ -66,6 +66,7 @@ export PKG_CONFIG_PATH=/usr/lib/pkgconfig
 (
 
  git clone https://github.com/pythongssapi/python-gssapi.git
+ cd python-gssapi
  python3 setup.py build
  python3 setup.py install
  
