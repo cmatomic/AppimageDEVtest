@@ -53,14 +53,16 @@ export PKG_CONFIG_PATH=/usr/lib/pkgconfig
 )
 
 (
- git clone https://github.com/KhronosGroup/glslang.git
- cd glslang
- git clone https://github.com/google/googletest.git External/googletest
- ./update_glslang_sources.py
+ #git clone https://github.com/KhronosGroup/glslang.git
+ wget https://salsa.debian.org/smcv/glslang/-/archive/debian-unstable/glslang-debian-unstable.tar.bz2
+ tar -xvjf glslang-debian-unstable.tar.bz2
+ cd glslang-debian-unstable
+ #git clone https://github.com/google/googletest.git External/googletest
+ #./update_glslang_sources.py
  mkdir -p BUILD_DIR
  cd BUILD_DIR
- cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX="$(pwd)/install" ../glslang
- make -j4 install ../glslang
+ cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX="$(pwd)/install" ../glslang-debian-unstable
+ make -j4 install ../glslang-debian-unstable
 )
 #(
 #git clone https://github.com/google/shaderc $SOURCE_DIR
