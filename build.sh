@@ -74,13 +74,12 @@ export PKG_CONFIG_PATH=/usr/lib/pkgconfig
 #)
 
 (
-
- git clone https://github.com/Microsoft/vcpkg.git
- cd vcpkg
-./bootstrap-vcpkg.sh
-./vcpkg integrate install
-./vcpkg install glslang
-
+ git clone https://github.com/KhronosGroup/glslang.git
+ cd glslang
+ mkdir -p $BUILD_DIR
+ cd $BUILD_DIR
+ cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX="$(pwd)/install" $SOURCE_DIR
+ make -j4 install
 )
 #(
 #git clone https://github.com/google/shaderc $SOURCE_DIR
@@ -195,7 +194,7 @@ cd libplacebo-2.72.0
  git clone https://github.com/videolan/dav1d.git
  cd dav1d
  mkdir build && cd build
- meson
+ meson --prefix=/usr
  ninja 
  ninja  install
  
@@ -215,6 +214,7 @@ cd libplacebo-2.72.0
   wget https://code.videolan.org/midchildan/aribb25/-/archive/master/aribb25-master.tar.bz2
   tar -xvjf aribb25-master.tar.bz2
   cd aribb25-master
+  ./bootstrap
   ./configure --prefix=/usr
   make -j$(nproc)
   make -j$(nproc) install
