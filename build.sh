@@ -48,16 +48,17 @@ export PKG_CONFIG_PATH=/usr/lib/pkgconfig
 (
 
  wget https://bootstrap.pypa.io/get-pip.py
- python3.8 get-pip.py
- python3.8 -m pip install setuptools --upgrade --user 
+ python3 get-pip.py
+ python3 -m pip install setuptools --upgrade --user 
  git clone https://github.com/pyinstaller/pyinstaller
  cd pyinstaller
  git checkout v4.0
  cd bootloader
- python3.8 ./waf all
+ python3 ./waf all
  cd ..
- python3.8 setup.py install
-          
+ python3 setup.py install
+ pip3 install meson
+ pip3 install ninja
 )
 
 
