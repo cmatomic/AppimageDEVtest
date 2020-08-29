@@ -81,7 +81,7 @@ export PKG_CONFIG_PATH=/usr/lib/pkgconfig
 ./vcpkg integrate install
 ./vcpkg install glslang
 
-(
+)
 #(
 #git clone https://github.com/google/shaderc $SOURCE_DIR
 #cd $SOURCE_DIR
