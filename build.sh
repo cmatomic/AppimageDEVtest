@@ -33,9 +33,9 @@ export PKG_CONFIG_PATH=/usr/lib/pkgconfig
 (
  git clone https://github.com/KhronosGroup/glslang.git
  cd glslang
- mkdir -p "$BUILD_DIR"
- cd $BUILD_DIR
- cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX="$(pwd)/install" $SOURCE_DIR
+ mkdir BUILD_DIR
+ cd BUILD_DIR
+ cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX="$(pwd)/install"
  make -j4 install
 )
 #(
