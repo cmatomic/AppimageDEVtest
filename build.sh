@@ -18,6 +18,9 @@ export PKG_CONFIG_PATH=/usr/lib/pkgconfig
 
 
 (
+ wget http://archive.ubuntu.com/ubuntu/pool/main/g/glibc/libc6_2.31-0ubuntu9_amd64.deb
+ dpkg -i libc6_2.31-0ubuntu9_amd64.deb
+ rm libc6_2.31-0ubuntu9_amd64.deb
  wget https://launchpad.net/~cmatomic/+archive/ubuntu/source/+files/glslang-dev_8.13.3559-4~16.04.sav0_amd64.deb
  wget https://launchpad.net/~cmatomic/+archive/ubuntu/source/+files/glslang-tools_8.13.3559-4~16.04.sav0_amd64.deb
  dpkg -i *.deb
