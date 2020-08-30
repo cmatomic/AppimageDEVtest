@@ -58,6 +58,23 @@ export PKG_CONFIG_PATH=/usr/lib/pkgconfig
 
 )
 
+
+(
+
+wget  https://gitlab.freedesktop.org/dbus/dbus/-/archive/master/dbus-master.tar.bz2
+tar -xvjf  dbus-master.tar.bz2
+cd dbus-master
+ ./configure --prefix=/usr
+ make -j$(nproc)
+ make -j$(nproc) install
+ 
+)
+
+
+
+
+
+
 (
  git clone https://github.com/KhronosGroup/SPIRV-Headers.git
  cd SPIRV-Headers
