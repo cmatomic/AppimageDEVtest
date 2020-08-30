@@ -4,7 +4,7 @@ export VERSION="4.0.0-dev"
 
 #echo "deb http://in.archive.ubuntu.com/ubuntu/ xenial main" | tee /etc/apt/sources.list.d/xenial.list
 apt-get  update
-apt --yes install python-software-properties software-properties-common
+#apt --yes install python-software-properties software-properties-common
 #add-apt-repository ppa:jonathonf/ffmpeg-4 --yes
 #add-apt-repository ppa:jonathonf/vlc-3 --yes
 #add-apt-repository ppa:cmatomic/source --yes
