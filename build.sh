@@ -16,6 +16,16 @@ apt-get --yes install curl build-essential pkg-config idn libusb-1.0-0-dev libsy
 
 export PKG_CONFIG_PATH=/usr/lib/pkgconfig
 
+
+(
+ wget https://launchpad.net/~cmatomic/+archive/ubuntu/source/+files/glslang-dev_8.13.3559-4~16.04.sav0_amd64.deb
+ wget https://launchpad.net/~cmatomic/+archive/ubuntu/source/+files/glslang-tools_8.13.3559-4~16.04.sav0_amd64.deb
+ dpkg -i *.deb
+ 
+)
+
+
+
 (
 
  wget https://bootstrap.pypa.io/get-pip.py
