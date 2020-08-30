@@ -7,6 +7,7 @@ apt-get  update
 #apt --yes install python-software-properties software-properties-common
 #add-apt-repository ppa:jonathonf/ffmpeg-4 --yes
 #add-apt-repository ppa:jonathonf/vlc-3 --yes
+apt-get install software-properties-common
 add-apt-repository ppa:cmatomic/source --yes
 #add-apt-repository universe --yes
 apt-get  update
