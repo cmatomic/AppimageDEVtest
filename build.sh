@@ -210,7 +210,7 @@ cd libva-2.8.0
 
  git clone http://git.videolan.org/git/x262.git
  cd x262 
- ./configure --prefix=/usr
+ ./configure --prefix=/usr --disable-libsystemd
   make -j$(nproc)
   make -j$(nproc) install
 
