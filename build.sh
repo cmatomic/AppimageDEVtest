@@ -64,6 +64,7 @@ export PKG_CONFIG_PATH=/usr/lib/pkgconfig
 wget  https://gitlab.freedesktop.org/dbus/dbus/-/archive/master/dbus-master.tar.bz2
 tar -xvjf  dbus-master.tar.bz2
 cd dbus-master
+./autogen.sh
  ./configure --prefix=/usr
  make -j$(nproc)
  make -j$(nproc) install
