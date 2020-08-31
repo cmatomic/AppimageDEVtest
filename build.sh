@@ -6,6 +6,7 @@ apt-get --yes install curl build-essential pkg-config  idn wget  libusb-1.0-0-de
  # krb5-config krb5-user glslang libaribb24-dev libmicrodns-dev libplacebo-dev libspatialaudio-dev libaom-dev libopenmpt-dev
 export PKG_CONFIG_PATH=/usr/lib/pkgconfig
 export PKG_CONFIG_PATH=/usr/lib/x86_64-linux-gnu/pkgconfig
+export /usr/lib/x86_64-linux-gnu/pkgconfig/libnfs.pc
 #:$PKG_CONFIG_PATH
 (
 
@@ -66,7 +67,7 @@ cd dbus-master
  git clone https://github.com/sahlberg/libnfs.git
  cd libnfs 
  ./bootstrap
- ./configure --prefix=/usr
+ ./configure
   make -j$(nproc)
   make -j$(nproc) install
 )
