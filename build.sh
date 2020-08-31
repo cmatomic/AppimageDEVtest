@@ -6,7 +6,7 @@ apt-get --yes install curl build-essential pkg-config  idn wget  libusb-1.0-0-de
  # krb5-config krb5-user glslang libaribb24-dev libmicrodns-dev libplacebo-dev libspatialaudio-dev libaom-dev libopenmpt-dev
 export PKG_CONFIG_PATH=/usr/lib/pkgconfig
 export PKG_CONFIG_PATH=/usr/lib/x86_64-linux-gnu/pkgconfig
-export /usr/lib/x86_64-linux-gnu/pkgconfig/libnfs.pc
+export LIBNFS_CONFIG_PATH=/usr/lib/x86_64-linux-gnu/pkgconfig
 #:$PKG_CONFIG_PATH
 (
 
