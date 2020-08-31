@@ -27,7 +27,7 @@ export /usr/lib/x86_64-linux-gnu/pkgconfig/libnfs.pc
 )
 
 (
-
+ 
  wget http://pkgconfig.freedesktop.org/releases/pkg-config-0.29.2.tar.gz
  tar -vzxf pkg-config-0.29.2.tar.gz
  cd pkg-config-0.29.2
@@ -149,6 +149,7 @@ cd libva-2.8.0
 )
 
 (
+  echo $libnfs.git
   git clone https://github.com/sahlberg/libnfs.git
   cd libnfs/
   cmake -DCMAKE_INSTALL_PREFIX=/usr .
