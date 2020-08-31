@@ -64,8 +64,9 @@ cd dbus-master
 
 (
 
- git clone https://github.com/sahlberg/libnfs.git
- cd libnfs 
+ wget  https://sites.google.com/site/libnfstarballs/li/libnfs-1.10.0.tar.gz
+ tar -vzxf libnfs-1.10.0.tar.gz
+ cd libnfs-1.10.0
  ./bootstrap
  ./configure
   make -j$(nproc)
