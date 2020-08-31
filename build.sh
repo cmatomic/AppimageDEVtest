@@ -55,15 +55,21 @@ wget  https://gitlab.freedesktop.org/dbus/dbus/-/archive/master/dbus-master.tar.
 tar -xvjf  dbus-master.tar.bz2
 cd dbus-master
 ./autogen.sh
- ./configure --prefix=/usr
+./configure --prefix=/usr
  make -j$(nproc)
  make -j$(nproc) install
  
 )
 
+(
 
-
-
+ git clone https://github.com/sahlberg/libnfs.git
+ cd libnfs 
+ ./bootstrap
+ ./configure --prefix=/usr
+  make -j$(nproc)
+  make -j$(nproc) install
+)
 
 
 (
