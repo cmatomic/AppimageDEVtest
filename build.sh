@@ -92,7 +92,7 @@ cd dbus-master
  ./update_glslang_sources.py
  mkdir -p BUILD_DIR
  cd BUILD_DIR
- cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX="$(pwd)/install"
+ cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX="$(pwd)/install" .../glslang
  make -j4 install
 )
 #(
