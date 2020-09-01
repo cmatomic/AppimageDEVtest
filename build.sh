@@ -17,7 +17,8 @@ set GYP_GENERATORS=ninja
 
  wget https://bootstrap.pypa.io/get-pip.py
  python3 get-pip.py
- python3 -m pip install setuptools --upgrade --user 
+ #python3 -m pip install setuptools --upgrade --user
+ python3 -m pip install --upgrade pip setuptools wheel
  git clone https://github.com/pyinstaller/pyinstaller
  cd pyinstaller
  git checkout v4.0
