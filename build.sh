@@ -33,9 +33,9 @@ set GYP_GENERATORS=ninja
 
 (
 
- wget https://www.nasm.us/pub/nasm/releasebuilds/2.13.03/nasm-2.13.03.tar.gz
- tar -vzxf  nasm-2.13.03.tar.gz
- cd nasm-2.13.03
+ wget https://www.nasm.us/pub/nasm/releasebuilds/2.15.05/nasm-2.15.05.tar.gz
+ tar -vzxf  nasm-2.15.05.tar.gz
+ cd nasm-2.15.05
  ./configure
  make -j$(nproc)
  make -j$(nproc) install
