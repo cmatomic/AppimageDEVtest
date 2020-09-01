@@ -32,6 +32,19 @@ set GYP_GENERATORS=ninja
 )
 
 (
+
+ wget https://www.nasm.us/pub/nasm/releasebuilds/2.13.03/nasm-2.13.03.tar.gz
+ tar -vzxf  nasm-2.13.03.tar.gz
+ cd nasm-2.13.03
+ ./configure
+ make -j$(nproc)
+ make -j$(nproc) install
+ 
+)
+
+
+
+(
  
  wget http://pkgconfig.freedesktop.org/releases/pkg-config-0.29.2.tar.gz
  tar -vzxf pkg-config-0.29.2.tar.gz
