@@ -11,6 +11,7 @@ apt-get --yes install curl build-essential pkg-config  idn wget  libusb-1.0-0-de
 export PKG_CONFIG_PATH=/usr/lib/pkgconfig
 export PKG_CONFIG_PATH=/usr/lib/x86_64-linux-gnu/pkgconfig
 export LIBNFS_CONFIG_PATH=/usr/lib/x86_64-linux-gnu/pkgconfig
+set GYP_GENERATORS=ninja
 #:$PKG_CONFIG_PATH
 (
 
