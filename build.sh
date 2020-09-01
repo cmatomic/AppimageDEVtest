@@ -93,7 +93,7 @@ cd dbus-master
  cd glslang
  mkdir -p BUILD_DIR
  cd BUILD_DIR
- cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX="$(pwd)/install" ../glslang
+ cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX="$(pwd)/install"
  make -j4 install
 )
 #(
