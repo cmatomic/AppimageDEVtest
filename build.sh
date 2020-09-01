@@ -142,10 +142,13 @@ cd libva-2.8.0
  wget https://github.com/haasn/libplacebo/archive/v2.72.0.tar.gz
  tar -vzxf v2.72.0.tar.gz
  cd libplacebo-2.72.0
- mkdir build && cd build
- meson
- ninja 
- ninja  install
+ $ DIR=./build
+ $ meson $DIR
+ $ ninja -C$DIR
+ #mkdir build && cd build
+ #meson
+ #ninja 
+ #ninja  install
 
 )
 
