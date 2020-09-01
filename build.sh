@@ -90,7 +90,7 @@ cd dbus-master
  cd glslang
  git clone https://github.com/google/googletest.git External/googletest
  ./update_glslang_sources.py
- cd glslang
+ #cd glslang
  #mkdir -p BUILD_DIR
  #cd BUILD_DIR
  cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX="$(pwd)/install"
