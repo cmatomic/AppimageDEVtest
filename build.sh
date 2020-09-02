@@ -247,7 +247,6 @@ cd libva-2.8.0
  
 )
 
-
 (
 
  git clone http://git.videolan.org/git/x262.git
@@ -255,6 +254,24 @@ cd libva-2.8.0
  ./configure --prefix=/usr --disable-libsystemd
   make -j$(nproc)
   make -j$(nproc) install
+
+)
+
+(
+
+  git clone https://github.com/mirror/x264.git
+  cd x264
+  ./configure --prefix=/usr
+  make -j$(nproc)
+  make -j$(nproc) install
+
+)
+
+(
+
+  git clone https://github.com/videolan/x265.git
+  cd build/linux ; ./make-Makefiles.bash
+  make
 
 )
 
