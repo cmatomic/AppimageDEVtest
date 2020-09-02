@@ -13,6 +13,18 @@ export PKG_CONFIG_PATH=/usr/lib/x86_64-linux-gnu/pkgconfig
 export LIBNFS_CONFIG_PATH=/usr/lib/x86_64-linux-gnu/pkgconfig
 set GYP_GENERATORS=ninja
 #:$PKG_CONFIG_PATH
+
+)
+
+ wget https://www.python.org/ftp/python/3.8.5/Python-3.8.5.tar.xz
+ tar -vzxf  Python-3.8.5.tar.xz
+ cd Python-3.8.5
+ ./configure
+ make -j$(nproc)
+ make -j$(nproc) install
+ 
+(
+
 (
 
  wget https://bootstrap.pypa.io/get-pip.py
@@ -43,8 +55,6 @@ set GYP_GENERATORS=ninja
  
 )
 
-
-
 (
  
  wget http://pkgconfig.freedesktop.org/releases/pkg-config-0.29.2.tar.gz
@@ -56,7 +66,6 @@ set GYP_GENERATORS=ninja
 
 )
 
-
 (
 
  wget https://ftp.gnu.org/pub/gnu/gettext/gettext-0.21.tar.gz
@@ -67,7 +76,6 @@ set GYP_GENERATORS=ninja
  make -j$(nproc) install
 
 )
-
 
 (
 
@@ -91,7 +99,6 @@ cd dbus-master
   make -j$(nproc)
   make -j$(nproc) install
 )
-
 
 (
  git clone https://github.com/KhronosGroup/SPIRV-Headers.git
@@ -125,7 +132,6 @@ cd dbus-master
 #ninja
 #ninja install 
 #)
-
 (
 
 wget https://github.com/intel/libva/releases/download/2.8.0/libva-2.8.0.tar.bz2
@@ -276,7 +282,6 @@ cd libva-2.8.0
  wget https://github.com/sahlberg/libsmb2/archive/v3.0.0.tar.gz
  tar -vzxf v3.0.0.tar.gz
  cd libsmb2-3.0.0
- export PKG_CONFIG=/usr/bin/pkg-config
  ./bootstrap
  ./configure --prefix=/usr
   make -j$(nproc)
