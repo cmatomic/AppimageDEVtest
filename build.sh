@@ -27,17 +27,17 @@ set GYP_GENERATORS=ninja
 
 (
 
- wget https://bootstrap.pypa.io/get-pip.py
- python3 get-pip.py
+ #wget https://bootstrap.pypa.io/get-pip.py
+ #python3 get-pip.py
  #python3 -m pip install setuptools --upgrade --user
- python3 -m pip install --upgrade pip setuptools wheel
- git clone https://github.com/pyinstaller/pyinstaller
- cd pyinstaller
- git checkout v4.0
- cd bootloader
- python3 ./waf all
- cd ..
- python3 setup.py install
+ #python3 -m pip install --upgrade pip setuptools wheel
+ #it clone https://github.com/pyinstaller/pyinstaller
+ #cd pyinstaller
+ #git checkout v4.0
+ #cd bootloader
+ #ython3 ./waf all
+ #cd ..
+ #python3 setup.py install
  pip3 install meson
  pip3 install ninja
  pip install gssapi
@@ -122,16 +122,20 @@ cd dbus-master
  cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX="$(pwd)/install"
  make -j4 install
 )
-#(
-#git clone https://github.com/google/shaderc $SOURCE_DIR
-#cd $SOURCE_DIR
-#./utils/git-sync-deps
-#cd $SOURCE_DIR/
-#cd $BUILD_DIR
-#cmake -GNinja -DCMAKE_BUILD_TYPE={Debug|Release|RelWithDebInfo} $SOURCE_DIR
-#ninja
-#ninja install 
-#)
+
+(
+
+git clone https://github.com/google/shaderc $SOURCE_DIR
+cd $SOURCE_DIR
+./utils/git-sync-deps
+cd $SOURCE_DIR/
+cd $BUILD_DIR
+cmake -GNinja -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX="$(pwd)/install" $SOURCE_DIR
+ninja
+ninja install
+
+)
+
 (
 
 wget https://github.com/intel/libva/releases/download/2.8.0/libva-2.8.0.tar.bz2
