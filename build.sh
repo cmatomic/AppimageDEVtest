@@ -14,7 +14,7 @@ export LIBNFS_CONFIG_PATH=/usr/lib/x86_64-linux-gnu/pkgconfig
 set GYP_GENERATORS=ninja
 #:$PKG_CONFIG_PATH
 
-)
+(
 
  wget https://www.python.org/ftp/python/3.8.5/Python-3.8.5.tar.xz
  tar -vzxf  Python-3.8.5.tar.xz
@@ -23,7 +23,7 @@ set GYP_GENERATORS=ninja
  make -j$(nproc)
  make -j$(nproc) install
  
-(
+)
 
 (
 
