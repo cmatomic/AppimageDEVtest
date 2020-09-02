@@ -123,16 +123,16 @@ cd dbus-master
  make -j4 install
 )
 
-(
+#(
 
-git clone https://github.com/google/shaderc 
-cd shaderc
-./utils/git-sync-deps
-cmake -GNinja -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX="$(pwd)/install"
-ninja
-ninja install
+#git clone https://github.com/google/shaderc 
+#cd shaderc
+#./utils/git-sync-deps
+#cmake -GNinja -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX="$(pwd)/install"
+#ninja
+#ninja install
 
-)
+#)
 
 (
 
