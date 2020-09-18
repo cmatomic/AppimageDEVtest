@@ -2,7 +2,7 @@
 
 #export VERSION="4.0.0-dev"
 export VERSION="3.0.11"
-echo "deb http://in.archive.ubuntu.com/ubuntu/ xenial main" | tee /etc/apt/sources.list.d/xenial.list
+#echo "deb http://in.archive.ubuntu.com/ubuntu/ xenial main" | tee /etc/apt/sources.list.d/xenial.list
 apt-get --yes install python-software-properties software-properties-commo
 add-apt-repository ppa:jonathonf/ffmpeg-4 --yes
 add-apt-repository ppa:jonathonf/vlc-3 --yes
