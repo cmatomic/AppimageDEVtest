@@ -2,9 +2,9 @@
 
 export VERSION="3.0.11"
 
-#echo "deb http://in.archive.ubuntu.com/ubuntu/ xenial main" | tee /etc/apt/sources.list.d/xenial.list
+echo "deb http://in.archive.ubuntu.com/ubuntu/ xenial main" | tee /etc/apt/sources.list.d/xenial.list
 apt-get update
-#apt-get --yes install python-software-properties software-properties-common
+apt-get --yes install python-software-properties software-properties-common
 add-apt-repository ppa:jonathonf/ffmpeg-4 --yes
 add-apt-repository ppa:jonathonf/vlc-3 --yes
 add-apt-repository universe --yes
@@ -17,19 +17,8 @@ apt-get --yes install curl build-essential autoconf  zsync  rsync libxcb-image0-
 
 (
 
- wget https://www.python.org/ftp/python/3.8.5/Python-3.8.5.tar.xz
- tar -xf  Python-3.8.5.tar.xz
- cd Python-3.8.5
- ./configure
- make -j$(nproc)
- make -j$(nproc) install
- 
-)
-
-(
-
- pip3 install meson
- pip3 install ninja
+ pip install meson
+ pip install ninja
  pip install gssapi
  pip install mako
  
