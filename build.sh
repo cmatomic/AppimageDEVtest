@@ -14,6 +14,14 @@ apt-get --yes install curl build-essential autoconf  zsync wget  rsync libxcb-im
 #apt-get build-dep vlc --yes
 
 
+(
+
+ pip install meson
+ pip install ninja
+ pip install gssapi
+ pip install mako
+ 
+)
 
 (
 
@@ -87,6 +95,19 @@ apt-get --yes install curl build-essential autoconf  zsync wget  rsync libxcb-im
   make -j$(nproc) install
   
 )
+
+(
+
+ git clone https://github.com/videolan/dav1d.git
+ cd dav1d
+ mkdir build && cd build
+ meson --prefix=/usr
+ ninja 
+ ninja  install
+ 
+)
+
+
 
 (
   wget http://download.videolan.org/pub/vlc/$VERSION/vlc-$VERSION.tar.xz
