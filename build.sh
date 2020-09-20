@@ -2,7 +2,7 @@
 
 export VERSION="3.0.11"
 
-echo "deb http://in.archive.ubuntu.com/ubuntu/ xenial main" | tee /etc/apt/sources.list.d/xenial.list
+#echo "deb http://in.archive.ubuntu.com/ubuntu/ xenial main" | tee /etc/apt/sources.list.d/xenial.list
 apt-get update
 apt-get --yes install python-software-properties software-properties-common
 add-apt-repository ppa:jonathonf/ffmpeg-4 --yes
