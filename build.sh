@@ -127,12 +127,13 @@ find ./vlc-$VERSION/build/usr/lib/vlc/plugins/ -name "lib*.so*" -exec patchelf -
 
 wget "https://github.com/probonopd/linuxdeployqt/releases/download/continuous/linuxdeployqt-continuous-x86_64.AppImage"
 #wget "https://raw.githubusercontent.com/anupam-git/appimage-wrapper/master/appimage-wrapper.sh"
-#wget "https://raw.githubusercontent.com/Nitrux/tools/master/aw"
-#chmod a+x ./linuxdeployqt-continuous-x86_64.AppImage
+wget "https://raw.githubusercontent.com/Nitrux/tools/master/aw"
+chmod a+x ./linuxdeployqt-continuous-x86_64.AppImage
 #chmod a+x  appimage-wrapper.sh
-#chmod a+x ./aw
-LINUX_DEPLOY_QT_EXCLUDE_COPYRIGHTS=true ARCH=x86_64 wget "https://raw.githubusercontent.com/Nitrux/tools/master/aw" ; chmod a+x ./aw  linuxdeployqt-continuous-x86_64.AppImage vlc-$VERSION/build/org.videolan.vlc.desktop  -bundle-non-qt-libs -exclude-libs=libfreetype.so.6 
-LINUX_DEPLOY_QT_EXCLUDE_COPYRIGHTS=true ARCH=x86_64 wget "https://raw.githubusercontent.com/Nitrux/tools/master/aw" ; chmod a+x ./aw  linuxdeployqt-continuous-x86_64.AppImage  vlc-$VERSION/build/org.videolan.vlc.desktop -updateinformation="gh-releases-zsync|cmatomic|VLCplayer-AppImage|continuous|VLC_media_player*.AppImage.zsync" -appimage
+chmod a+x aw
+ AW=./aw
+LINUX_DEPLOY_QT_EXCLUDE_COPYRIGHTS=true ARCH=x86_64 $AW  linuxdeployqt-continuous-x86_64.AppImage vlc-$VERSION/build/org.videolan.vlc.desktop  -bundle-non-qt-libs -exclude-libs=libfreetype.so.6 
+LINUX_DEPLOY_QT_EXCLUDE_COPYRIGHTS=true ARCH=x86_64 $AW  linuxdeployqt-continuous-x86_64.AppImage  vlc-$VERSION/build/org.videolan.vlc.desktop -updateinformation="gh-releases-zsync|cmatomic|VLCplayer-AppImage|continuous|VLC_media_player*.AppImage.zsync" -appimage
 mkdir -p release
 cp ./VLC_media_player*.zsync release/
 cp ./VLC_media_player*.AppImage release/
