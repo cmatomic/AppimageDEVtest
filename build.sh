@@ -144,7 +144,7 @@ chmod a+x ./linuxdeployqt-continuous-x86_64.AppImage
 chmod a+x aw
 AW=./aw
 LINUX_DEPLOY_QT_EXCLUDE_COPYRIGHTS=true ARCH=x86_64 $AW  linuxdeployqt-continuous-x86_64.AppImage vlc-$VERSION/build/org.videolan.vlc.desktop  -bundle-non-qt-libs -exclude-libs=libfreetype.so.6 
-LINUX_DEPLOY_QT_EXCLUDE_COPYRIGHTS=true ARCH=x86_64 $AW  linuxdeployqt-continuous-x86_64.AppImage  vlc-$VERSION/build/org.videolan.vlc.desktop -updateinformation="gh-releases-zsync|cmatomic|VLCplayer-AppImage|continuous|VLC_media_player*.AppImage.zsync" -appimage
+LINUX_DEPLOY_QT_EXCLUDE_COPYRIGHTS=true ARCH=x86_64 $AW  linuxdeployqt-continuous-x86_64.AppImage  vlc-$VERSION/build/org.videolan.vlc.desktop -updateinformation="gh-releases-zsync|cmatomic|AppimageDEVtest|beta|VLC_media_player*.AppImage.zsync" -appimage
 mkdir -p release
 cp ./VLC_media_player*.zsync release/
 cp ./VLC_media_player*.AppImage release/
