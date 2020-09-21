@@ -49,6 +49,19 @@ export PKG_CONFIG_PATH=/usr/lib/x86_64-linux-gnu/pkgconfig
 
 
 (
+
+wget https://github.com/intel/libva/releases/download/2.8.0/libva-2.8.0.tar.bz2
+tar -xvjf libva-2.8.0.tar.bz2
+cd libva-2.8.0
+./autogen.sh
+./configure --prefix=/usr --libdir=/usr/lib/x86_64-linux-gnu
+ make -j$(nproc)
+ make -j$(nproc) install
+
+)
+
+
+(
   git clone https://github.com/videolabs/libdsm.git
   cd libdsm
   ./bootstrap
@@ -157,7 +170,7 @@ chmod a+x ./linuxdeployqt-continuous-x86_64.AppImage
 chmod a+x aw
 AW=./aw
 LINUX_DEPLOY_QT_EXCLUDE_COPYRIGHTS=true ARCH=x86_64 $AW  linuxdeployqt-continuous-x86_64.AppImage vlc-$VERSION/build/org.videolan.vlc.desktop  -bundle-non-qt-libs -exclude-libs=libfreetype.so.6 
-LINUX_DEPLOY_QT_EXCLUDE_COPYRIGHTS=true ARCH=x86_64 $AW  linuxdeployqt-continuous-x86_64.AppImage  vlc-$VERSION/build/org.videolan.vlc.desktop -updateinformation="gh-releases-zsync|cmatomic|AppimageDEVtest|beta|VLC_media_player*.AppImage.zsync" -appimage
+LINUX_DEPLOY_QT_EXCLUDE_COPYRIGHTS=true ARCH=x86_64 $AW  linuxdeployqt-continuous-x86_64.AppImage  vlc-$VERSION/build/org.videolan.vlc.desktop -updateinformation="gh-releases-zsync|cmatomic|AppimageDEVtest|$VERSION|VLC_media_player*.AppImage.zsync" -appimage
 mkdir -p release
 cp ./VLC_media_player*.zsync release/
 cp ./VLC_media_player*.AppImage release/
