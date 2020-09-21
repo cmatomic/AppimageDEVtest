@@ -2,7 +2,7 @@
 
 export VERSION="3.0.11"
 
-#echo "deb http://in.archive.ubuntu.com/ubuntu/ xenial main" | tee /etc/apt/sources.list.d/xenial.list
+
 apt-get update
 apt-get --yes install python-software-properties software-properties-common
 add-apt-repository ppa:jonathonf/ffmpeg-4 --yes
@@ -98,6 +98,19 @@ export PKG_CONFIG_PATH=/usr/lib/x86_64-linux-gnu/pkgconfig
   
 )
 
+
+(
+
+ git clone https://github.com/videolan/dav1d.git
+ cd dav1d
+ mkdir build && cd build
+ meson --prefix=/usr
+ ninja 
+ ninja  install
+ 
+)
+
+
 (
   wget http://download.videolan.org/pub/vlc/$VERSION/vlc-$VERSION.tar.xz
   tar xJf vlc-$VERSION.tar.xz
@@ -126,12 +139,10 @@ find ./vlc-$VERSION/build/usr/lib/vlc/ -maxdepth 1 -name "lib*.so*" -exec patche
 find ./vlc-$VERSION/build/usr/lib/vlc/plugins/ -name "lib*.so*" -exec patchelf --set-rpath '$ORIGIN/../../:$ORIGIN/../../../' {} \;
 
 wget "https://github.com/probonopd/linuxdeployqt/releases/download/continuous/linuxdeployqt-continuous-x86_64.AppImage"
-#wget "https://raw.githubusercontent.com/anupam-git/appimage-wrapper/master/appimage-wrapper.sh"
 wget "https://raw.githubusercontent.com/Nitrux/tools/master/aw"
 chmod a+x ./linuxdeployqt-continuous-x86_64.AppImage
-#chmod a+x  appimage-wrapper.sh
 chmod a+x aw
- AW=./aw
+AW=./aw
 LINUX_DEPLOY_QT_EXCLUDE_COPYRIGHTS=true ARCH=x86_64 $AW  linuxdeployqt-continuous-x86_64.AppImage vlc-$VERSION/build/org.videolan.vlc.desktop  -bundle-non-qt-libs -exclude-libs=libfreetype.so.6 
 LINUX_DEPLOY_QT_EXCLUDE_COPYRIGHTS=true ARCH=x86_64 $AW  linuxdeployqt-continuous-x86_64.AppImage  vlc-$VERSION/build/org.videolan.vlc.desktop -updateinformation="gh-releases-zsync|cmatomic|VLCplayer-AppImage|continuous|VLC_media_player*.AppImage.zsync" -appimage
 mkdir -p release
