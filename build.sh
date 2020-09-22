@@ -50,17 +50,17 @@ export PKG_CONFIG_PATH=/usr/lib/x86_64-linux-gnu/pkgconfig
 
 
 
-#(
+(
 
-#wget https://github.com/intel/libva/releases/download/2.8.0/libva-2.8.0.tar.bz2
-#tar -xvjf libva-2.8.0.tar.bz2
-#cd libva-2.8.0
-#./autogen.sh
-#./configure --prefix=/usr --libdir=/usr/lib/x86_64-linux-gnu
-# make -j$(nproc)
-# make -j$(nproc) install
+ wget https://github.com/intel/libva/releases/download/1.8.0/libva-1.8.0.tar.bz2
+ tar -xvjf libva-1.8.0.tar.bz2
+ cd libva-1.8.0
+./autogen.sh
+./configure --prefix=/usr --libdir=/usr/lib/x86_64-linux-gnu
+ make -j$(nproc)
+ make -j$(nproc) install
 
-#)
+)
 
 
 
@@ -87,11 +87,13 @@ export PKG_CONFIG_PATH=/usr/lib/x86_64-linux-gnu/pkgconfig
 )
 
 (
+
   git clone https://github.com/sahlberg/libnfs.git
   cd libnfs/
   cmake -DCMAKE_INSTALL_PREFIX=/usr .
   make -j$(nproc)
   make -j$(nproc) install
+  
 )
 
 (
