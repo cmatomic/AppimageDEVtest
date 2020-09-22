@@ -109,7 +109,7 @@ export PKG_CONFIG_PATH=/usr/lib/x86_64-linux-gnu/pkgconfig
 (
 
   LIBDVDREAD_VERSION="6.1.1"
-  wget https://get.videolan.org/libdvdread/$LIBDVDREAD_VERSION/libdvdread-$LIBDVDREAD_VERSION.tar.bz2
+  wget https://download.videolan.org/pub/videolan/libdvdnav/last/libdvdnav-$LIBDVDREAD_VERSION.tar.bz2
   tar -xvjf  libdvdread-$LIBDVDREAD_VERSION.tar.bz2
   cd libdvdread-$LIBDVDREAD_VERSION
   ./configure  --prefix=/usr --docdir=/usr/share/doc/libdvdread-$LIBDVDREAD_VERSION --enable-static
@@ -121,7 +121,7 @@ export PKG_CONFIG_PATH=/usr/lib/x86_64-linux-gnu/pkgconfig
 (
 
   LIBDVDNAV_VERSION="6.1.0"
-  wget https://get.videolan.org/libdvdnav/$LIBDVDNAV_VERSION/libdvdnav-$LIBDVDNAV_VERSION.tar.bz2
+  wget https://download.videolan.org/pub/videolan/libdvdnav/last/libdvdnav-$LIBDVDNAV_VERSION.bz2
   tar -xvjf  libdvdnav-$LIBDVDNAV_VERSION.tar.bz2
   cd libdvdnav-$LIBDVDNAV_VERSION
   ./configure  --prefix=/usr --docdir=/usr/share/doc/libdvdnav-doc --enable-static --disable-silent-rules
