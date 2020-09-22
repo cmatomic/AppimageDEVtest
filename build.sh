@@ -121,7 +121,7 @@ export PKG_CONFIG_PATH=/usr/lib/x86_64-linux-gnu/pkgconfig
 (
 
   LIBDVDNAV_VERSION="6.1.0"
-  wget https://download.videolan.org/pub/videolan/libdvdnav/last/libdvdnav-$LIBDVDNAV_VERSION.bz2
+  wget https://download.videolan.org/pub/videolan/libdvdnav/last/libdvdnav-6.1.0.tar.bz2
   tar -xvjf  libdvdnav-$LIBDVDNAV_VERSION.tar.bz2
   cd libdvdnav-$LIBDVDNAV_VERSION
   ./configure  --prefix=/usr --docdir=/usr/share/doc/libdvdnav-doc --enable-static --disable-silent-rules
