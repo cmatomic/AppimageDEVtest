@@ -48,17 +48,6 @@ export PKG_CONFIG_PATH=/usr/lib/x86_64-linux-gnu/pkgconfig
 )
 
 
-(
-
-wget https://github.com/intel/intel-vaapi-driver/releases/download/2.4.1/intel-vaapi-driver-2.4.1.tar.bz2
-tar -xvjf intel-vaapi-driver-2.4.1.tar.bz2
-cd intel-vaapi-driver-2.4.1
- ./configure
- make -j$(nproc)
- make -j$(nproc) install
-
-
-)
 
 
 (
@@ -70,6 +59,20 @@ cd libva-2.8.0
 ./configure --prefix=/usr --libdir=/usr/lib/x86_64-linux-gnu
  make -j$(nproc)
  make -j$(nproc) install
+
+)
+
+
+
+(
+
+wget https://github.com/intel/intel-vaapi-driver/releases/download/2.4.1/intel-vaapi-driver-2.4.1.tar.bz2
+tar -xvjf intel-vaapi-driver-2.4.1.tar.bz2
+cd intel-vaapi-driver-2.4.1
+ ./configure
+ make -j$(nproc)
+ make -j$(nproc) install
+
 
 )
 
