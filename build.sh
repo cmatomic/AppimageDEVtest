@@ -4,7 +4,7 @@ export VERSION="3.0.11.1"
 
 
 apt-get update
-apt-get --yes install python-software-properties software-properties-common
+#apt-get --yes install python-software-properties software-properties-common
 add-apt-repository ppa:jonathonf/ffmpeg-4 --yes
 add-apt-repository ppa:jonathonf/vlc-3 --yes
 add-apt-repository universe --yes
