@@ -4,7 +4,7 @@ services:
   - docker
   
 before_install:
-  - docker pull debian:10.6
+  - docker pull debian:latest
 
 after_success:
   - wget https://github.com/probonopd/uploadtool/raw/master/upload.sh -O u.sh
@@ -12,7 +12,7 @@ after_success:
   - ./u.sh release/*
 
 script:
-  - docker run --rm -v $(pwd)/:/build/ -w /build/ debian:10.6 bash build.sh
+  - docker run --rm -v $(pwd)/:/build/ -w /build/ debian:latest bash build.sh
 
 branches:
   except:
