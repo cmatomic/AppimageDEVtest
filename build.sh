@@ -18,6 +18,7 @@ export PKG_CONFIG_PATH=/usr/lib/x86_64-linux-gnu/pkgconfig
 
  wget https://bootstrap.pypa.io/get-pip.py
  python3 get-pip.py
+ python3 -m pip install --upgrade pip
  python3 -m pip install setuptools --upgrade --user
  python3 -m pip install --upgrade pip setuptools wheel
  it clone https://github.com/pyinstaller/pyinstaller
