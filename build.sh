@@ -1,6 +1,6 @@
 #/bin/bash
 
-export VERSION="4.0.0-dev"
+export VERSION="3.0.16"
 
 
 apt-get update
